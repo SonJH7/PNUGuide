@@ -23,6 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.pnu.pnuguide.ui.course.SpotListActivity" />
+        <activity android:name="com.pnu.pnuguide.ui.SettingsActivity" />
     </application>
 
 </manifest>

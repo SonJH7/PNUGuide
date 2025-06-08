@@ -1,124 +1,55 @@
 package com.pnu.pnuguide
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Chat
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material3.Button
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.pnu.pnuguide.ChatViewModel
-import com.pnu.pnuguide.ui.theme.PNUGuideTheme
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.fragment.app.commit
+import com.pnu.pnuguide.ui.chat.ChatFragment
+import com.pnu.pnuguide.ui.course.CourseFragment
+import com.pnu.pnuguide.ui.stamp.StampFragment
 
-sealed class Screen(val label: String, val icon: ImageVector) {
-    object Course : Screen("Course", Icons.Filled.Home)
-    object Stamp : Screen("Stamp", Icons.Filled.Star)
-    object Chat : Screen("Chat", Icons.Filled.Chat)
-}
+class MainActivity : AppCompatActivity() {
 
-class MainActivity : ComponentActivity() {
-    private val viewModel by viewModels<ChatViewModel>()
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var drawerLayout: DrawerLayout
+
+        override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            PNUGuideTheme {
-                MainScreen(viewModel)
+                setContentView(R.layout.activity_main)
+
+        drawerLayout = findViewById(R.id.drawer_layout)
+        val toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.app_name, R.string.app_name)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        findViewById<NavigationView>(R.id.navigation_view).setNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.menu_settings -> startActivity(android.content.Intent(this, com.pnu.pnuguide.ui.SettingsActivity::class.java))
+                R.id.menu_reset_nickname -> {/* TODO */}
             }
+            drawerLayout.closeDrawers()
+            true
         }
-    }
-}
-
-@Composable
-fun MainScreen(viewModel: ChatViewModel) {
-    var current by remember { mutableStateOf<Screen>(Screen.Course) }
-    Scaffold(
-        modifier = Modifier.fillMaxSize(),
-        bottomBar = {
-            NavigationBar {
-                listOf(Screen.Course, Screen.Stamp, Screen.Chat).forEach { screen ->
-                    NavigationBarItem(
-                        selected = current == screen,
-                        onClick = { current = screen },
-                        icon = { Icon(screen.icon, contentDescription = screen.label) },
-                        label = { Text(screen.label) }
-                    )
-                }
+        
+                val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        bottomNav.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_course -> switchFragment(CourseFragment())
+                R.id.nav_stamp -> switchFragment(StampFragment())
+                R.id.nav_chat -> switchFragment(ChatFragment())
             }
+            true
         }
-            ) { innerPadding ->
-        when (current) {
-            Screen.Course -> CourseScreen(Modifier.padding(innerPadding))
-            Screen.Stamp -> StampScreen(Modifier.padding(innerPadding))
-            Screen.Chat -> ChatScreen(viewModel, Modifier.padding(innerPadding))
+                if (savedInstanceState == null) {
+            bottomNav.selectedItemId = R.id.nav_course
         }
     }
-}
 
-@Composable
-fun CourseScreen(modifier: Modifier = Modifier) {
-    Column(modifier = modifier.padding(16.dp)) {
-        Text(text = "Course Screen")
-    }
-}
-
-@Composable
-fun StampScreen(modifier: Modifier = Modifier) {
-    Column(modifier = modifier.padding(16.dp)) {
-        Text(text = "Stamp Screen")
-    }
-}
-
-@Composable
-fun ChatScreen(viewModel: ChatViewModel, modifier: Modifier = Modifier) {
-    val input = remember { mutableStateOf("") }
-    Column(modifier = modifier.padding(16.dp)) {
-        OutlinedTextField(
-            value = input.value,
-            onValueChange = { input.value = it },
-            label = { Text("Ask something") }
-        )
-        Button(onClick = { viewModel.sendMessage(input.value) }) {
-            Text("Send")
+        private fun switchFragment(fragment: androidx.fragment.app.Fragment) {
+        supportFragmentManager.commit {
+            replace(R.id.fragment_container, fragment)
         }
-        Text(text = viewModel.reply.value)
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ChatPreview() {
-    PNUGuideTheme {
-        val vm = ChatViewModel()
-        ChatScreen(vm)
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun MainPreview() {
-    PNUGuideTheme {
-        val vm = ChatViewModel()
-        MainScreen(vm)
     }
 }
