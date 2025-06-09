@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.pnu.pnuguide.R
 
@@ -15,6 +16,10 @@ class SpotDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_spot_detail)
+
+        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_spot_detail)
+        setSupportActionBar(toolbar)
+        toolbar.setNavigationOnClickListener { finish() }
 
         val title = intent.getStringExtra(EXTRA_TITLE) ?: ""
         val desc = intent.getStringExtra(EXTRA_DESCRIPTION) ?: ""
