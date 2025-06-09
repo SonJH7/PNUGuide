@@ -24,6 +24,12 @@
         </activity>
         <activity android:name="com.pnu.pnuguide.ui.LoginActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name="com.pnu.pnuguide.ui.home.HomeActivity" />
+        <activity android:name="com.pnu.pnuguide.ui.map.MapActivity" />
+        <activity android:name="com.pnu.pnuguide.ui.profile.ProfileActivity" />
+        <activity android:name="com.pnu.pnuguide.ui.course.CourseActivity" />
+        <activity android:name="com.pnu.pnuguide.ui.stamp.StampActivity" />
+        <activity android:name="com.pnu.pnuguide.ui.chat.ChatActivity" />
         <activity android:name="com.pnu.pnuguide.ui.course.SpotListActivity" />
         <activity android:name="com.pnu.pnuguide.ui.course.SpotDetailActivity" />
         <activity android:name="com.pnu.pnuguide.ui.SettingsActivity" />
