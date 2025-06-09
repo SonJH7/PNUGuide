@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.fragment.app.commit
-import com.pnu.pnuguide.ui.chat.ChatFragment
-import com.pnu.pnuguide.ui.course.CourseFragment
-import com.pnu.pnuguide.ui.stamp.StampFragment
+import com.pnu.pnuguide.ui.home.HomeFragment
+import com.pnu.pnuguide.ui.map.MapFragment
+import com.pnu.pnuguide.ui.profile.ProfileFragment
 import android.content.Intent
 import com.pnu.pnuguide.ui.SettingsActivity
 
@@ -30,17 +30,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
         
-                val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNav.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_course -> switchFragment(CourseFragment())
-                R.id.nav_stamp -> switchFragment(StampFragment())
-                R.id.nav_chat -> switchFragment(ChatFragment())
+                R.id.nav_home -> switchFragment(HomeFragment())
+                R.id.nav_map -> switchFragment(MapFragment())
+                R.id.nav_profile -> switchFragment(ProfileFragment())
             }
             true
         }
-                if (savedInstanceState == null) {
-            bottomNav.selectedItemId = R.id.nav_course
+        if (savedInstanceState == null) {
+            bottomNav.selectedItemId = R.id.nav_home
         }
     }
 
