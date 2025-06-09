@@ -1,0 +1,45 @@
+package com.pnu.pnuguide.ui.course
+
+import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import android.widget.ImageView
+import android.widget.TextView
+import com.google.android.material.button.MaterialButton
+import com.pnu.pnuguide.R
+
+class SpotDetailActivity : AppCompatActivity() {
+
+    private val viewModel by viewModels<SpotDetailViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_spot_detail)
+
+        val title = intent.getStringExtra(EXTRA_TITLE) ?: ""
+        val desc = intent.getStringExtra(EXTRA_DESCRIPTION) ?: ""
+        val imageRes = intent.getIntExtra(EXTRA_IMAGE_RES, 0)
+        val videoId = intent.getStringExtra(EXTRA_VIDEO_ID) ?: ""
+        val spotId = intent.getStringExtra(EXTRA_SPOT_ID) ?: ""
+
+        findViewById<ImageView>(R.id.image_spot).setImageResource(imageRes)
+        findViewById<TextView>(R.id.text_title).text = title
+        findViewById<TextView>(R.id.text_description).text = desc
+
+        findViewById<MaterialButton>(R.id.button_watch_video).setOnClickListener {
+            viewModel.openYoutube(this, videoId)
+        }
+
+        findViewById<MaterialButton>(R.id.button_collect_stamp).setOnClickListener {
+            viewModel.addStamp(spotId)
+        }
+    }
+
+    companion object {
+        const val EXTRA_TITLE = "extra_title"
+        const val EXTRA_DESCRIPTION = "extra_description"
+        const val EXTRA_IMAGE_RES = "extra_image_res"
+        const val EXTRA_VIDEO_ID = "extra_video_id"
+        const val EXTRA_SPOT_ID = "extra_spot_id"
+    }
+}
