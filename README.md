@@ -12,7 +12,7 @@ CourseActivity에서 코스 리스트(썸네일, 이름, 소요 시간) 표시
 SpotListFragment(코스 내 스팟 목록)에서 스팟 아이템 나열
 Fragment
 CourseActivity 내부에 탭별 프래그먼트(인기, 역사·문화, 학습·휴식)로 코스 목록 분리
-MainActivity 하단 탭(코스, 스탬프, 챗봇)을 Fragment로 화면 전환
+MainActivity 하단 탭(Home, Map, Profile)을 Fragment로 화면 전환
 DrawerLayout
 MainActivity 상단 햄버거 아이콘 클릭 시 사이드 메뉴(설정, 익명 닉네임 초기화 등) 표시
 외부 App 연동 
