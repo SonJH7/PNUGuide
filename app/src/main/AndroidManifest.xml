@@ -15,16 +15,15 @@
         android:theme="@style/Theme.PNUGuide"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.PNUGuide">
+            android:name="com.pnu.pnuguide.ui.OnboardingActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.pnu.pnuguide.ui.LoginActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name="com.pnu.pnuguide.ui.course.SpotListActivity" />
         <activity android:name="com.pnu.pnuguide.ui.course.SpotDetailActivity" />
         <activity android:name="com.pnu.pnuguide.ui.SettingsActivity" />
