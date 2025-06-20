@@ -16,6 +16,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.appbar.MaterialToolbar
 import com.pnu.pnuguide.R
+import com.pnu.pnuguide.MainActivity
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -27,7 +28,12 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_map)
         setSupportActionBar(toolbar)
-        toolbar.setNavigationOnClickListener { finish() }
+        toolbar.setNavigationOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            startActivity(intent)
+            finish()
+        }
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map_fragment) as SupportMapFragment
