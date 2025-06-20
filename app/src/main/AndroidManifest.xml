@@ -16,6 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PNUGuide"
         tools:targetApi="31">
+        <!-- 🔑 Google Maps API Key 등록 -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
         <activity
             android:name="com.pnu.pnuguide.ui.OnboardingActivity"
             android:exported="true">
