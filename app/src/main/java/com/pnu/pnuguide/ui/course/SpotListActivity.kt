@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.pnu.pnuguide.R
-import com.pnu.pnuguide.ui.HeaderUtils.setupHeader2
+import com.pnu.pnuguide.ui.setupHeader2
 
 class SpotListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

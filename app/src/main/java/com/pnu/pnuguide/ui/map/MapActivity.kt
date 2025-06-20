@@ -23,7 +23,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.appbar.MaterialToolbar
 import com.pnu.pnuguide.R
 import com.pnu.pnuguide.MainActivity
-import com.pnu.pnuguide.ui.HeaderUtils.setupHeader2
+import com.pnu.pnuguide.ui.setupHeader2
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 

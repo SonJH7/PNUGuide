@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.content.Intent
 import android.net.Uri
-import com.pnu.pnuguide.ui.HeaderUtils.setupHeader2
+import com.pnu.pnuguide.ui.setupHeader2
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.pnu.pnuguide.R

@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.pnu.pnuguide.R
-import com.pnu.pnuguide.ui.HeaderUtils.setupHeader2
+import com.pnu.pnuguide.ui.setupHeader2
 
 class DirectionsActivity : AppCompatActivity() {
 

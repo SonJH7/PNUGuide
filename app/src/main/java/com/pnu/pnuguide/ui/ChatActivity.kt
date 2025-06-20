@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.MaterialToolbar
 import com.pnu.pnuguide.R
-import com.pnu.pnuguide.ui.HeaderUtils.setupHeader1
+import com.pnu.pnuguide.ui.setupHeader1
 
 class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
