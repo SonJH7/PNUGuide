@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background_light"
-        android:navigationIcon="@drawable/ic_map"
+        android:navigationIcon="@drawable/ic_settings"
         android:title="@string/title_home"
         android:titleTextColor="@color/text_primary"
         app:titleCentered="true" />
