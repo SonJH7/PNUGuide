@@ -5,6 +5,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageView
 import android.widget.TextView
+import android.content.Intent
+import android.net.Uri
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.pnu.pnuguide.R
@@ -26,6 +28,8 @@ class SpotDetailActivity : AppCompatActivity() {
         val imageRes = intent.getIntExtra(EXTRA_IMAGE_RES, 0)
         val videoId = intent.getStringExtra(EXTRA_VIDEO_ID) ?: ""
         val spotId = intent.getStringExtra(EXTRA_SPOT_ID) ?: ""
+        val latitude = intent.getDoubleExtra(EXTRA_LATITUDE, Double.NaN)
+        val longitude = intent.getDoubleExtra(EXTRA_LONGITUDE, Double.NaN)
 
         findViewById<ImageView>(R.id.image_spot).setImageResource(imageRes)
         findViewById<TextView>(R.id.text_title).text = title
@@ -38,6 +42,15 @@ class SpotDetailActivity : AppCompatActivity() {
         findViewById<MaterialButton>(R.id.button_collect_stamp).setOnClickListener {
             viewModel.addStamp(spotId)
         }
+
+        findViewById<MaterialButton>(R.id.button_get_directions).setOnClickListener {
+            if (!latitude.isNaN() && !longitude.isNaN()) {
+                val gmmIntentUri = Uri.parse("google.navigation:q=$latitude,$longitude")
+                val intent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                intent.setPackage("com.google.android.apps.maps")
+                startActivity(intent)
+            }
+        }
     }
 
     companion object {
@@ -46,5 +59,7 @@ class SpotDetailActivity : AppCompatActivity() {
         const val EXTRA_IMAGE_RES = "extra_image_res"
         const val EXTRA_VIDEO_ID = "extra_video_id"
         const val EXTRA_SPOT_ID = "extra_spot_id"
+        const val EXTRA_LATITUDE = "extra_latitude"
+        const val EXTRA_LONGITUDE = "extra_longitude"
     }
 }
