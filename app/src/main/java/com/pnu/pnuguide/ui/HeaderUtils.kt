@@ -7,6 +7,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import androidx.core.content.ContextCompat
 import com.pnu.pnuguide.R
 import com.pnu.pnuguide.ui.map.MapActivity
+import com.pnu.pnuguide.ui.SettingsActivity
 
 fun MaterialToolbar.setupHeader1(activity: AppCompatActivity, titleResId: Int) {
     activity.setSupportActionBar(this)
@@ -33,6 +34,15 @@ fun MaterialToolbar.setupHeader1(activity: AppCompatActivity, titleResId: Int) {
         } else {
             false
         }
+    }
+}
+
+fun MaterialToolbar.setupHeaderSettings(activity: AppCompatActivity, titleResId: Int) {
+    activity.setSupportActionBar(this)
+    this.title = activity.getString(titleResId)
+    this.navigationIcon = ContextCompat.getDrawable(activity, R.drawable.ic_settings)
+    this.setNavigationOnClickListener {
+        activity.startActivity(Intent(activity, SettingsActivity::class.java))
     }
 }
 
