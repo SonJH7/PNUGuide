@@ -7,6 +7,7 @@
     <string name="menu_reset_nickname">Reset Nickname</string>
     <string name="watch_video">Watch Video</string>
     <string name="collect_stamp">Collect Stamp</string>
+    <string name="get_directions">길 찾기</string>
     <string name="get_started">Get Started</string>
     <string name="log_in">Log in</string>
     <string name="sign_up">Sign up</string>
