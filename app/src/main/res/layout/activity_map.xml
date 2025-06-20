@@ -13,6 +13,12 @@
         android:navigationIcon="@drawable/ic_arrow_back_black_24"
         android:title="@string/title_map" />
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="@string/hint_search_map" />
+
     <fragment
         android:id="@+id/map_fragment"
         android:name="com.google.android.gms.maps.SupportMapFragment"

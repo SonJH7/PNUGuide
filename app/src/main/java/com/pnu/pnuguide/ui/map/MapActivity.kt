@@ -5,6 +5,9 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.widget.SearchView
+import android.location.Geocoder
+import java.io.IOException
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -39,6 +42,19 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map_fragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        val searchView = findViewById<SearchView>(R.id.search_view_map)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let {
+                    searchLocation(it)
+                    searchView.clearFocus()
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean = false
+        })
     }
 
     override fun onMapReady(map: GoogleMap) {
@@ -76,6 +92,21 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == LOCATION_PERMISSION_REQUEST && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             enableMyLocation()
+        }
+    }
+
+    private fun searchLocation(query: String) {
+        try {
+            val geocoder = Geocoder(this)
+            val results = geocoder.getFromLocationName(query, 1)
+            if (!results.isNullOrEmpty()) {
+                val location = results[0]
+                val latLng = LatLng(location.latitude, location.longitude)
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16f))
+                googleMap.addMarker(MarkerOptions().position(latLng).title(query))
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
         }
     }
 
