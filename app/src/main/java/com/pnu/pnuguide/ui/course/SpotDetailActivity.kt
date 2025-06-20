@@ -22,6 +22,7 @@ class SpotDetailActivity : AppCompatActivity() {
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_spot_detail)
         setSupportActionBar(toolbar)
+        toolbar.inflateMenu(R.menu.menu_home_toolbar)
         toolbar.setNavigationOnClickListener { finish() }
         toolbar.setOnMenuItemClickListener { item ->
             if (item.itemId == R.id.action_settings) {
