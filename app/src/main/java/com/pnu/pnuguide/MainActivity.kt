@@ -48,8 +48,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_map -> {
                     toolbar.title = getString(R.string.title_map)
-                    toolbar.navigationIcon = null
-                    toolbar.setNavigationOnClickListener(null)
+                    toolbar.navigationIcon = ContextCompat.getDrawable(this, R.drawable.ic_arrow_back_black_24)
+                    toolbar.setNavigationOnClickListener {
+                        bottomNav.selectedItemId = R.id.nav_home
+                    }
                     supportFragmentManager.commit {
                         replace(R.id.fragment_container, MapFragment())
                     }
