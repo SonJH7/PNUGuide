@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">PNUGuide</string>
+    <string name="title_home">Home</string>
+    <string name="title_map">Map</string>
+    <string name="title_profile">Profile</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_reset_nickname">Reset Nickname</string>
+    <string name="watch_video">Watch Video</string>
+    <string name="collect_stamp">Collect Stamp</string>
+    <string name="get_directions">길 찾기</string>
+    <string name="start_point">출발지</string>
+    <string name="destination">도착지</string>
+    <string name="open_in_google_maps">Google Maps로 이동</string>
+    <string name="my_location">현재 위치</string>
+    <string name="get_started">Get Started</string>
+    <string name="log_in">Log in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="log_in_or_sign_up">Log in or sign up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="settings">Settings</string>
+    <string name="pnu_guide">PNU Guide</string>
+    <string name="pnu_guide_update">PNU Guide Update</string>
+    <string name="title_course">Course</string>
+    <string name="title_stamp">Stamp</string>
+    <string name="title_chatbot">Chatbot</string>
+    <string name="hint_search_map">Search location</string>
+</resources>
