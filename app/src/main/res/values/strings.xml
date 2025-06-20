@@ -8,6 +8,10 @@
     <string name="watch_video">Watch Video</string>
     <string name="collect_stamp">Collect Stamp</string>
     <string name="get_directions">길 찾기</string>
+    <string name="start_point">출발지</string>
+    <string name="destination">도착지</string>
+    <string name="open_in_google_maps">Google Maps로 이동</string>
+    <string name="my_location">현재 위치</string>
     <string name="get_started">Get Started</string>
     <string name="log_in">Log in</string>
     <string name="sign_up">Sign up</string>
