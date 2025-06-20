@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.pnu.pnuguide.R
+import com.pnu.pnuguide.ui.SettingsActivity
 
 class DirectionsActivity : AppCompatActivity() {
 
@@ -28,6 +29,14 @@ class DirectionsActivity : AppCompatActivity() {
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_directions)
         setSupportActionBar(toolbar)
         toolbar.setNavigationOnClickListener { finish() }
+        toolbar.setOnMenuItemClickListener { item ->
+            if (item.itemId == R.id.action_settings) {
+                startActivity(Intent(this, SettingsActivity::class.java))
+                true
+            } else {
+                false
+            }
+        }
 
         editStart = findViewById(R.id.edit_start)
         editDestination = findViewById(R.id.edit_destination)

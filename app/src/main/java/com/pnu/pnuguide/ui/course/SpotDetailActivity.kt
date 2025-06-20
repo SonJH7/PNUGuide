@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.content.Intent
 import android.net.Uri
+import com.pnu.pnuguide.ui.SettingsActivity
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.pnu.pnuguide.R
@@ -22,6 +23,14 @@ class SpotDetailActivity : AppCompatActivity() {
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_spot_detail)
         setSupportActionBar(toolbar)
         toolbar.setNavigationOnClickListener { finish() }
+        toolbar.setOnMenuItemClickListener { item ->
+            if (item.itemId == R.id.action_settings) {
+                startActivity(Intent(this, SettingsActivity::class.java))
+                true
+            } else {
+                false
+            }
+        }
 
         val title = intent.getStringExtra(EXTRA_TITLE) ?: ""
         val desc = intent.getStringExtra(EXTRA_DESCRIPTION) ?: ""

@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:navigationIcon="@drawable/ic_arrow_back_black_24"
-        android:title="@string/title_map" />
+        android:title="@string/title_map"
+        app:menu="@menu/menu_home_toolbar" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view_map"
