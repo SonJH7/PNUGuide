@@ -23,6 +23,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.appbar.MaterialToolbar
 import com.pnu.pnuguide.R
 import com.pnu.pnuguide.MainActivity
+import com.pnu.pnuguide.ui.SettingsActivity
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -43,6 +44,14 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
             startActivity(intent)
             finish()
+        }
+        toolbar.setOnMenuItemClickListener { item ->
+            if (item.itemId == R.id.action_settings) {
+                startActivity(Intent(this, SettingsActivity::class.java))
+                true
+            } else {
+                false
+            }
         }
 
         val mapFragment = supportFragmentManager

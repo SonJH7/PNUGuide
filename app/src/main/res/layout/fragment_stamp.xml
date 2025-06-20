@@ -13,7 +13,8 @@
         android:navigationIcon="@drawable/ic_arrow_back_black_24"
         android:title="@string/title_stamp"
         android:titleTextColor="@color/text_primary"
-        app:titleCentered="true" />
+        app:titleCentered="true"
+        app:menu="@menu/menu_home_toolbar" />
 
     <TextView
         android:id="@+id/text_stamp"
