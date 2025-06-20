@@ -4,6 +4,9 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+import java.util.Properties
+import java.io.FileInputStream
+
 android {
     namespace = "com.pnu.pnuguide"
     compileSdk = 35
@@ -18,6 +21,15 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    val localProps = Properties()
+    val localPropsFile = rootProject.file("local.properties")
+    if (localPropsFile.exists()) {
+        localProps.load(FileInputStream(localPropsFile))
+    }
+    val openAiKey = localProps.getProperty("OPENAI_API_KEY")
+        ?: System.getenv("OPENAI_API_KEY")
+        ?: "API KEY HERE"
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -25,10 +37,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "OPENAI_API_KEY", "\"API KEY HERE\"")
+            buildConfigField("String", "OPENAI_API_KEY", "\"$openAiKey\"")
         }
         debug {
-            buildConfigField("String", "OPENAI_API_KEY", "\"API KEY HERE\"")
+            buildConfigField("String", "OPENAI_API_KEY", "\"$openAiKey\"")
         }
     }
     compileOptions {
