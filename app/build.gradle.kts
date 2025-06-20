@@ -29,6 +29,9 @@ android {
     val openAiKey = localProps.getProperty("OPENAI_API_KEY")
         ?: System.getenv("OPENAI_API_KEY")
         ?: "API KEY HERE"
+    val mapsApiKey = localProps.getProperty("MAPS_API_KEY")
+        ?: System.getenv("MAPS_API_KEY")
+        ?: "API_KEY_MISSING"
 
     buildTypes {
         release {
@@ -38,9 +41,11 @@ android {
                 "proguard-rules.pro"
             )
             buildConfigField("String", "OPENAI_API_KEY", "\"$openAiKey\"")
+            buildConfigField("String", "MAPS_API_KEY", "\"$mapsApiKey\"")
         }
         debug {
             buildConfigField("String", "OPENAI_API_KEY", "\"$openAiKey\"")
+            buildConfigField("String", "MAPS_API_KEY", "\"$mapsApiKey\"")
         }
     }
     compileOptions {
