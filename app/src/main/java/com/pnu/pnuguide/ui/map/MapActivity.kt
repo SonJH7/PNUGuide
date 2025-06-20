@@ -64,9 +64,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         googleMap.addMarker(MarkerOptions().position(pnu).title("PNU"))
         enableMyLocation()
         googleMap.setOnInfoWindowClickListener { marker ->
-            val gmmIntentUri = Uri.parse("google.navigation:q=${marker.position.latitude},${marker.position.longitude}")
-            val intent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            intent.setPackage("com.google.android.apps.maps")
+            val intent = Intent(this, DirectionsActivity::class.java).apply {
+                putExtra(DirectionsActivity.EXTRA_DEST_NAME, marker.title)
+                putExtra(DirectionsActivity.EXTRA_DEST_LATITUDE, marker.position.latitude)
+                putExtra(DirectionsActivity.EXTRA_DEST_LONGITUDE, marker.position.longitude)
+            }
             startActivity(intent)
         }
     }

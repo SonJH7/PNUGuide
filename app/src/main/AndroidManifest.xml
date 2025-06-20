@@ -33,6 +33,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name="com.pnu.pnuguide.ui.home.HomeActivity" />
         <activity android:name="com.pnu.pnuguide.ui.map.MapActivity" />
+        <activity android:name="com.pnu.pnuguide.ui.map.DirectionsActivity" />
         <activity android:name="com.pnu.pnuguide.ui.profile.ProfileActivity" />
         <activity android:name="com.pnu.pnuguide.ui.course.CourseActivity" />
         <activity android:name="com.pnu.pnuguide.ui.stamp.StampActivity" />
