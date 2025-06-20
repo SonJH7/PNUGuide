@@ -50,10 +50,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_map -> {
                     toolbar.title = getString(R.string.title_map)
-                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
-                    toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24)
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    toolbar.setNavigationIcon(R.drawable.ic_map)
                     toolbar.setNavigationOnClickListener {
-                        bottomNav.selectedItemId = R.id.nav_home
+                        startActivity(Intent(this, MapActivity::class.java))
                     }
                     supportFragmentManager.commit {
                         replace(R.id.fragment_container, MapFragment())
@@ -63,8 +63,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_profile -> {
                     toolbar.title = getString(R.string.title_profile)
                     supportActionBar?.setDisplayHomeAsUpEnabled(false)
-                    toolbar.navigationIcon = null
-                    toolbar.setNavigationOnClickListener(null)
+                    toolbar.setNavigationIcon(R.drawable.ic_map)
+                    toolbar.setNavigationOnClickListener {
+                        startActivity(Intent(this, MapActivity::class.java))
+                    }
                     supportFragmentManager.commit {
                         replace(R.id.fragment_container, ProfileFragment())
                     }

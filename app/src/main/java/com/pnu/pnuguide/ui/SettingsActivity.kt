@@ -14,7 +14,9 @@ class SettingsActivity : AppCompatActivity() {
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_settings)
         setSupportActionBar(toolbar)
-        toolbar.setNavigationOnClickListener { finish() }
+        toolbar.setNavigationOnClickListener {
+            startActivity(android.content.Intent(this, com.pnu.pnuguide.ui.map.MapActivity::class.java))
+        }
 
         setItem(R.id.item_account, R.drawable.ic_arrow_back_black_24, "Account Settings")
         setItem(R.id.item_notification, R.drawable.ic_arrow_back_black_24, "Notification Settings")

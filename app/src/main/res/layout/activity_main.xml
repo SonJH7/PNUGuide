@@ -14,7 +14,7 @@
         android:title="@string/pnu_guide"
         android:titleTextColor="@color/text_primary"
         app:titleCentered="true"
-        app:navigationIcon="@null"
+        app:navigationIcon="@drawable/ic_map"
         app:menu="@menu/menu_home_toolbar" />
 
     <FrameLayout
