@@ -13,7 +13,8 @@
         android:navigationIcon="@drawable/ic_settings"
         android:title="@string/title_home"
         android:titleTextColor="@color/text_primary"
-        app:titleCentered="true" />
+        app:titleCentered="true"
+        app:menu="@menu/menu_home_toolbar" />
 
     <fragment
         android:id="@+id/fragment_home"

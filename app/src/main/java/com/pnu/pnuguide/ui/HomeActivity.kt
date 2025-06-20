@@ -14,4 +14,5 @@ class HomeActivity : AppCompatActivity() {
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_home)
         toolbar.setupHeaderSettings(this, R.string.title_home)
     }
+
 }
