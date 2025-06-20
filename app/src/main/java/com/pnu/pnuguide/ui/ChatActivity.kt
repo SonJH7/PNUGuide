@@ -8,7 +8,7 @@ import com.pnu.pnuguide.R
 class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_chat)
+        setContentView(R.layout.activity_chat)
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_chat)
         setSupportActionBar(toolbar)
