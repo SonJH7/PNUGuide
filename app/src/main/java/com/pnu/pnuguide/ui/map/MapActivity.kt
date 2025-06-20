@@ -38,6 +38,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_map)
         setSupportActionBar(toolbar)
+        toolbar.inflateMenu(R.menu.menu_home_toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener {
             val intent = Intent(this, MainActivity::class.java)

@@ -12,8 +12,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:navigationIcon="@drawable/ic_arrow_back_black_24"
-        android:title="@string/get_directions"
-        app:menu="@menu/menu_home_toolbar" />
+        android:title="@string/get_directions" />
 
     <EditText
         android:id="@+id/edit_start"

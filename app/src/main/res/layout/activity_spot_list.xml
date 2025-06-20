@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:navigationIcon="@drawable/ic_arrow_back_black_24"
-        android:title="@string/app_name"
-        app:menu="@menu/menu_home_toolbar" />
+        android:title="@string/app_name" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_spots"
