@@ -5,7 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView  // ✅
 import android.location.Geocoder
 import java.io.IOException
 import androidx.appcompat.app.AppCompatActivity
