@@ -99,6 +99,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))

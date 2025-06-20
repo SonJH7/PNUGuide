@@ -12,6 +12,7 @@ import com.pnu.pnuguide.ui.map.MapFragment
 import com.pnu.pnuguide.ui.map.MapActivity
 import androidx.core.content.ContextCompat
 import com.pnu.pnuguide.ui.profile.ProfileFragment
+import com.pnu.pnuguide.ui.chat.ChatFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -66,6 +67,18 @@ class MainActivity : AppCompatActivity() {
                     toolbar.setNavigationOnClickListener(null)
                     supportFragmentManager.commit {
                         replace(R.id.fragment_container, ProfileFragment())
+                    }
+                    true
+                }
+                R.id.nav_chat -> {
+                    toolbar.title = getString(R.string.title_chatbot)
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    toolbar.setNavigationIcon(R.drawable.ic_map)
+                    toolbar.setNavigationOnClickListener {
+                        startActivity(Intent(this, MapActivity::class.java))
+                    }
+                    supportFragmentManager.commit {
+                        replace(R.id.fragment_container, ChatFragment())
                     }
                     true
                 }

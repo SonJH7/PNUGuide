@@ -11,17 +11,23 @@ import kotlinx.coroutines.launch
 
 class ChatViewModel : ViewModel() {
 
-    private val _reply = MutableStateFlow("")
-    val reply: StateFlow<String> = _reply
+    private val _messages = MutableStateFlow<List<ChatUiMessage>>(emptyList())
+    val messages: StateFlow<List<ChatUiMessage>> = _messages
 
     fun sendMessage(text: String) {
+        val userMsg = ChatUiMessage(text, true)
+        _messages.value = _messages.value + userMsg
         viewModelScope.launch {
             try {
-                val request = ChatRequest(messages = listOf(ChatMessage("user", text)))
+                val requestMessages = _messages.value.map {
+                    ChatMessage(if (it.isUser) "user" else "assistant", it.content)
+                }
+                val request = ChatRequest(messages = requestMessages)
                 val response = RetrofitClient.openAiService.chat(request)
-                                _reply.value = response.choices.firstOrNull()?.message?.content ?: ""
+                val reply = response.choices.firstOrNull()?.message?.content ?: ""
+                _messages.value = _messages.value + ChatUiMessage(reply, false)
             } catch (e: Exception) {
-                                _reply.value = "Error: ${e.message}"
+                _messages.value = _messages.value + ChatUiMessage("Error: ${e.message}", false)
             }
         }
     }
