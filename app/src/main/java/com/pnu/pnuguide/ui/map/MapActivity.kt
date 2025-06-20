@@ -23,7 +23,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.appbar.MaterialToolbar
 import com.pnu.pnuguide.R
 import com.pnu.pnuguide.MainActivity
-import com.pnu.pnuguide.ui.SettingsActivity
+import com.pnu.pnuguide.ui.HeaderUtils.setupHeader2
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -37,22 +37,12 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_map)
-        setSupportActionBar(toolbar)
-        toolbar.inflateMenu(R.menu.menu_home_toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setupHeader2(this, R.string.title_map)
         toolbar.setNavigationOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
             startActivity(intent)
             finish()
-        }
-        toolbar.setOnMenuItemClickListener { item ->
-            if (item.itemId == R.id.action_settings) {
-                startActivity(Intent(this, SettingsActivity::class.java))
-                true
-            } else {
-                false
-            }
         }
 
         val mapFragment = supportFragmentManager
