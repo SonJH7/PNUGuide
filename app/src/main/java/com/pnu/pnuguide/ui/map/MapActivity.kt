@@ -28,6 +28,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_map)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
