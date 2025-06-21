@@ -33,7 +33,7 @@
                 android:id="@+id/rs49bgap0hwg"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/museum"
+                android:src="@drawable/ic_search"
                 android:scaleType="fitXY" />
         </LinearLayout>
         <EditText

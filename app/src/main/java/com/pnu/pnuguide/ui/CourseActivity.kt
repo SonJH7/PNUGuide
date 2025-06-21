@@ -61,8 +61,8 @@ class CourseActivity : AppCompatActivity() {
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_course)
         toolbar.setupHeader1(this, R.string.title_course)
 
-        Glide.with(this).load("https://i.imgur.com/1tMFzp8.png")
-            .into(findViewById(R.id.rs49bgap0hwg))
+        findViewById<ImageView>(R.id.rs49bgap0hwg)
+            .setImageResource(R.drawable.ic_search)
 
         findViewById<ImageView>(R.id.image_history_1).setImageResource(R.drawable.sae_do)
         findViewById<ImageView>(R.id.image_history_2).setImageResource(R.drawable.vs)
