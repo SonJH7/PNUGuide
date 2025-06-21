@@ -10,6 +10,7 @@ import android.content.Intent
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -60,15 +61,9 @@ class CourseActivity : AppCompatActivity() {
         Glide.with(this)
             .load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/yb4j87iw_expires_30_days.png")
             .into(findViewById(R.id.rzafkzrm2ak))
-        Glide.with(this)
-            .load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/z7s2j8n3_expires_30_days.png")
-            .into(findViewById(R.id.image_history_1))
-        Glide.with(this)
-            .load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/hc760uhy_expires_30_days.png")
-            .into(findViewById(R.id.image_history_2))
-        Glide.with(this)
-            .load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/yb4j87iw_expires_30_days.png")
-            .into(findViewById(R.id.image_history_3))
+        findViewById<ImageView>(R.id.image_history_1).setImageResource(R.drawable.museum)
+        findViewById<ImageView>(R.id.image_history_2).setImageResource(R.drawable.jijil)
+        findViewById<ImageView>(R.id.image_history_3).setImageResource(R.drawable.ang)
         Glide.with(this)
             .load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/z7s2j8n3_expires_30_days.png")
             .into(findViewById(R.id.image_study_1))
