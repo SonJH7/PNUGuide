@@ -23,7 +23,7 @@ fun MaterialToolbar.setupHeader1(activity: AppCompatActivity, titleResId: Int) {
     // 아이콘을 벡터 자산으로 교체
     menu.findItem(R.id.action_settings)?.apply {
         icon = ContextCompat.getDrawable(context, R.drawable.ic_settings)
-        setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+        setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
     }
 
     // 클릭 리스너
