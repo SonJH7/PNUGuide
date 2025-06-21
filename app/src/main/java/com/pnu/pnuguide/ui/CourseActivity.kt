@@ -24,13 +24,23 @@ class CourseActivity : AppCompatActivity() {
     private var searchQuery: String = ""
     private lateinit var adapter: CourseSearchAdapter
     private val baseList = listOf(
-        "Campus Highlights Tour",
-        "Historic Landmarks Tour",
-        "Nature Discovery Walk",
-        "Science Exploration Course",
-        "Library Tour"
+        CourseItem(
+            "Campus Highlights Tour",
+            "Approx. 2 hours",
+            "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/z7s2j8n3_expires_30_days.png"
+        ),
+        CourseItem(
+            "Historic Landmarks Tour",
+            "Approx. 3 hours",
+            "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/hc760uhy_expires_30_days.png"
+        ),
+        CourseItem(
+            "Nature Discovery Walk",
+            "Approx. 1.5 hours",
+            "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/yb4j87iw_expires_30_days.png"
+        )
     )
-    private val displayList = mutableListOf<String>()
+    private val displayList = mutableListOf<CourseItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -125,7 +135,7 @@ class CourseActivity : AppCompatActivity() {
             override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
                 if (!rv.canScrollVertically(1)) {
                     val more = if (searchQuery.isEmpty()) baseList else baseList.filter {
-                        it.contains(searchQuery, ignoreCase = true)
+                        it.title.contains(searchQuery, ignoreCase = true)
                     }
                     val start = displayList.size
                     displayList.addAll(more)
@@ -173,7 +183,7 @@ class CourseActivity : AppCompatActivity() {
 
     private fun filterList() {
         val filtered = if (searchQuery.isEmpty()) baseList else baseList.filter {
-            it.contains(searchQuery, ignoreCase = true)
+            it.title.contains(searchQuery, ignoreCase = true)
         }
         displayList.clear()
         displayList.addAll(filtered)
