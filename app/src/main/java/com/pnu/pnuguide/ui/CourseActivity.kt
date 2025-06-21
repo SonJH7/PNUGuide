@@ -170,6 +170,22 @@ class CourseActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 searchQuery = s.toString()
                 filterList()
+
+                if (s.isNullOrEmpty()) {
+                    recycler.visibility = View.GONE
+                    categoryRow.visibility = View.VISIBLE
+                    showSection(sectionPopular)
+                    scrollView.visibility = View.VISIBLE
+                    cancelBtn.visibility = View.GONE
+                } else if (recycler.visibility != View.VISIBLE) {
+                    categoryRow.visibility = View.GONE
+                    sectionPopular.visibility = View.GONE
+                    sectionHistory.visibility = View.GONE
+                    sectionStudy.visibility = View.GONE
+                    scrollView.visibility = View.GONE
+                    recycler.visibility = View.VISIBLE
+                    cancelBtn.visibility = View.VISIBLE
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {}
