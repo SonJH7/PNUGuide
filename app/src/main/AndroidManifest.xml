@@ -36,6 +36,9 @@
         <activity android:name="com.pnu.pnuguide.ui.map.DirectionsActivity" />
         <activity android:name="com.pnu.pnuguide.ui.profile.ProfileActivity" />
         <activity android:name="com.pnu.pnuguide.ui.course.CourseActivity" />
+        <activity android:name="com.pnu.pnuguide.ui.course.PopularActivity" />
+        <activity android:name="com.pnu.pnuguide.ui.course.HistoryActivity" />
+        <activity android:name="com.pnu.pnuguide.ui.course.StudyActivity" />
         <activity android:name="com.pnu.pnuguide.ui.stamp.StampActivity" />
         <activity android:name="com.pnu.pnuguide.ui.chat.ChatActivity" />
         <activity android:name="com.pnu.pnuguide.ui.course.SpotListActivity" />
