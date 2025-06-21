@@ -77,9 +77,6 @@ class StampFragment : Fragment() {
         }
 
         binding.toolbarStamp.setNavigationOnClickListener { requireActivity().finish() }
-        binding.buttonCapture.setOnClickListener {
-            captureImage()
-        }
     }
 
     private fun startCamera() {

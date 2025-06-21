@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar_stamp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/button_capture"/>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <androidx.camera.view.PreviewView
         android:id="@+id/preview_view"
@@ -39,13 +39,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_capture"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/stamp_capture"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
