@@ -107,6 +107,7 @@ class CourseActivity : AppCompatActivity() {
         }
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        bottomNav.selectedItemId = R.id.nav_home
         bottomNav.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_home -> {
@@ -129,7 +130,6 @@ class CourseActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        bottomNav.selectedItemId = R.id.nav_home
     }
 
     private fun filterList() {
