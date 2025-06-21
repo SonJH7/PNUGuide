@@ -526,6 +526,8 @@
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:background="@color/background_light"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
         app:itemIconSize="32dp"
         app:labelVisibilityMode="labeled"
         app:itemHorizontalTranslationEnabled="false"
