@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import java.io.File
 
 import com.pnu.pnuguide.databinding.FragmentStampBinding
@@ -40,6 +40,7 @@ class StampFragment : Fragment() {
 
     private var imageCapture: ImageCapture? = null
     private var cameraProvider: ProcessCameraProvider? = null
+    private var currentStampId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,8 +53,16 @@ class StampFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerStamps.layoutManager = GridLayoutManager(requireContext(), 4)
-        val adapter = StampAdapter()
+        binding.recyclerStamps.layoutManager = LinearLayoutManager(requireContext())
+        val adapter = StampAdapter { stamp ->
+            currentStampId = stamp.id
+            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED) {
+                startCamera()
+            } else {
+                requestPermission.launch(Manifest.permission.CAMERA)
+            }
+        }
         binding.recyclerStamps.adapter = adapter
 
         viewModel.stamps.observe(viewLifecycleOwner) {
@@ -69,11 +78,7 @@ class StampFragment : Fragment() {
 
         binding.toolbarStamp.setNavigationOnClickListener { requireActivity().finish() }
         binding.buttonCapture.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                if (cameraProvider == null) startCamera() else captureImage()
-            } else {
-                requestPermission.launch(Manifest.permission.CAMERA)
-            }
+            captureImage()
         }
     }
 
@@ -101,7 +106,7 @@ class StampFragment : Fragment() {
                 binding.previewView.visibility = View.GONE
                 cameraProvider?.unbindAll()
                 cameraProvider = null
-                viewModel.processImage(file)
+                currentStampId?.let { viewModel.processImage(file, it) }
             }
 
             override fun onError(exception: ImageCaptureException) {
