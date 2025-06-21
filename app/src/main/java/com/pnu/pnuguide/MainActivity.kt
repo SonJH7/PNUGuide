@@ -9,7 +9,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pnu.pnuguide.ui.SettingsActivity
 import com.pnu.pnuguide.ui.home.HomeFragment
 import com.pnu.pnuguide.ui.map.MapFragment
+import com.pnu.pnuguide.ui.map.MapActivity
+import androidx.core.content.ContextCompat
 import com.pnu.pnuguide.ui.profile.ProfileFragment
+import com.pnu.pnuguide.ui.chat.ChatFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +38,11 @@ class MainActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.nav_home -> {
                     toolbar.title = getString(R.string.title_home)
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    toolbar.setNavigationIcon(R.drawable.ic_map)
+                    toolbar.setNavigationOnClickListener {
+                        startActivity(Intent(this, MapActivity::class.java))
+                    }
                     supportFragmentManager.commit {
                         replace(R.id.fragment_container, HomeFragment())
                     }
@@ -42,6 +50,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_map -> {
                     toolbar.title = getString(R.string.title_map)
+                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                    toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24)
+                    toolbar.setNavigationOnClickListener {
+                        bottomNav.selectedItemId = R.id.nav_home
+                    }
                     supportFragmentManager.commit {
                         replace(R.id.fragment_container, MapFragment())
                     }
@@ -49,8 +62,23 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_profile -> {
                     toolbar.title = getString(R.string.title_profile)
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    toolbar.navigationIcon = null
+                    toolbar.setNavigationOnClickListener(null)
                     supportFragmentManager.commit {
                         replace(R.id.fragment_container, ProfileFragment())
+                    }
+                    true
+                }
+                R.id.nav_chat -> {
+                    toolbar.title = getString(R.string.title_chatbot)
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    toolbar.setNavigationIcon(R.drawable.ic_map)
+                    toolbar.setNavigationOnClickListener {
+                        startActivity(Intent(this, MapActivity::class.java))
+                    }
+                    supportFragmentManager.commit {
+                        replace(R.id.fragment_container, ChatFragment())
                     }
                     true
                 }

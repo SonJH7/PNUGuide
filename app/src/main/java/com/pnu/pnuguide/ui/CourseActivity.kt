@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.MaterialToolbar
 import com.pnu.pnuguide.R
+import com.pnu.pnuguide.ui.setupHeader1
 
 class CourseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,7 +12,6 @@ class CourseActivity : AppCompatActivity() {
         setContentView(R.layout.fragment_course)
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_course)
-        setSupportActionBar(toolbar)
-        toolbar.setNavigationOnClickListener { finish() }
+        toolbar.setupHeader1(this, R.string.title_course)
     }
 }

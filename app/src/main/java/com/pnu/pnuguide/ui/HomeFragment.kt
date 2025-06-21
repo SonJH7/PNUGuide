@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.pnu.pnuguide.R
-import com.pnu.pnuguide.ui.chat.ChatActivity
 import com.pnu.pnuguide.ui.course.CourseActivity
 import com.pnu.pnuguide.ui.stamp.StampActivity
 
@@ -28,9 +27,6 @@ class HomeFragment : Fragment() {
         }
         view.findViewById<MaterialButton>(R.id.btn_stamp).setOnClickListener {
             startActivity(Intent(requireContext(), StampActivity::class.java))
-        }
-        view.findViewById<MaterialButton>(R.id.btn_chat).setOnClickListener {
-            startActivity(Intent(requireContext(), ChatActivity::class.java))
         }
     }
 }

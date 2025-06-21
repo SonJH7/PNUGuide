@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.pnu.pnuguide.R
+import com.pnu.pnuguide.ui.setupHeader2
 
 class SpotListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,7 +13,7 @@ class SpotListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_spot_list)
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_spot_list)
-        setSupportActionBar(toolbar)
+        toolbar.setupHeader2(this, R.string.app_name)
         toolbar.setNavigationOnClickListener { finish() }
 
         // TODO: load spot list

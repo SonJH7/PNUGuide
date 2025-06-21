@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PNUGuide"
         tools:targetApi="31">
+        <!-- 🔑 Google Maps API Key 등록 -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
         <activity
             android:name="com.pnu.pnuguide.ui.OnboardingActivity"
             android:exported="true">
@@ -27,6 +33,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name="com.pnu.pnuguide.ui.home.HomeActivity" />
         <activity android:name="com.pnu.pnuguide.ui.map.MapActivity" />
+        <activity android:name="com.pnu.pnuguide.ui.map.DirectionsActivity" />
         <activity android:name="com.pnu.pnuguide.ui.profile.ProfileActivity" />
         <activity android:name="com.pnu.pnuguide.ui.course.CourseActivity" />
         <activity android:name="com.pnu.pnuguide.ui.stamp.StampActivity" />

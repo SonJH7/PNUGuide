@@ -4,6 +4,9 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+import java.util.Properties
+import java.io.FileInputStream
+
 android {
     namespace = "com.pnu.pnuguide"
     compileSdk = 35
@@ -18,6 +21,18 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    val localProps = Properties()
+    val localPropsFile = rootProject.file("local.properties")
+    if (localPropsFile.exists()) {
+        localProps.load(FileInputStream(localPropsFile))
+    }
+    val openAiKey = localProps.getProperty("OPENAI_API_KEY")
+        ?: System.getenv("OPENAI_API_KEY")
+        ?: "API KEY HERE"
+    val mapsApiKey = localProps.getProperty("MAPS_API_KEY")
+        ?: System.getenv("MAPS_API_KEY")
+        ?: "API_KEY_MISSING"
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -25,10 +40,15 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "OPENAI_API_KEY", "\"API KEY HERE\"")
+            buildConfigField("String", "OPENAI_API_KEY", "\"$openAiKey\"")
+            buildConfigField("String", "MAPS_API_KEY", "\"$mapsApiKey\"")
+            manifestPlaceholders["MAPS_API_KEY"] = mapsApiKey
         }
         debug {
-            buildConfigField("String", "OPENAI_API_KEY", "\"API KEY HERE\"")
+            buildConfigField("String", "OPENAI_API_KEY", "\"$openAiKey\"")
+            buildConfigField("String", "MAPS_API_KEY", "\"$mapsApiKey\"")
+            manifestPlaceholders["MAPS_API_KEY"] = mapsApiKey
+
         }
     }
     compileOptions {
@@ -79,6 +99,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))

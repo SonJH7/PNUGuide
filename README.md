@@ -1,61 +1,107 @@
-# PNUGuide
+# PNU Guide
 
-Coroutine
-구현 위치: Retrofit + Kotlin Coroutines를 사용하여
-GPT-4 챗봇(OpenAI API) 호출
-YouTube Data API 호출
-Google Maps/Direction API 비동기 요청
-설명: 모든 외부 API 통신을 suspend 함수 + ViewModelScope.launch { … } 형태로 처리하여 메인(UI) 스레드를 블로킹하지 않고 결과를 받아옵니다.
-Jetpack Library 
-RecyclerView
-CourseActivity에서 코스 리스트(썸네일, 이름, 소요 시간) 표시
-SpotListFragment(코스 내 스팟 목록)에서 스팟 아이템 나열
-Fragment
-CourseActivity 내부에 탭별 프래그먼트(인기, 역사·문화, 학습·휴식)로 코스 목록 분리
-MainActivity 하단 탭(Home, Map, Profile)을 Fragment로 화면 전환
-DrawerLayout
-MainActivity 상단 햄버거 아이콘 클릭 시 사이드 메뉴(설정, 익명 닉네임 초기화 등) 표시
-외부 App 연동 
-YouTube 앱 Intent
-SpotDetailActivity에서 각 단과대학·건물 소개 영상을 YouTube 앱으로 바로 연동
-Camera 앱 Intent (ML QR 대신 사진 촬영)
-사용자가 곧바로 카메라 앱을 호출해 장소 사진 촬영 → ML 모델 유사도 비교 후 스탬프 자동 부여
-DB
-Firebase Firestore(외부 DB)
-비회원(익명)에 대한 사용자 데이터(스탬프 수집 기록, 코스 즐겨찾기, 퀴즈 결과)를 Firestore 익명 인증(Anonymous Auth)으로
-저장·동기화
-Firestore의 오프라인 퍼시스턴스 기능을 활성화해 네트워크가 없어도 최근 데이터가 캐시되어 안정적으로 동작
-API 
-Google Maps SDK & Directions API
-캠퍼스 주요 시설 위치 표시, 경로 탐색, 실시간 내비게이션 연동
-OpenAI GPT-4 API
-ChatActivity에서 GPT 챗봇을 구현해 학교 관련 자연어 질의응답
-머신러닝 (30점)
-TensorFlow Lite 클러스터링 모델
-사전에 학습된 캠퍼스 내 스팟 이미지 클러스터링 모델(tflite) 사용
-사용자가 찍은 사진의 특징 벡터를 비교하여 “어떤 스팟과 유사한지” 판별 → 유사도 임계치 이상일 경우 디지털 스탬프 자동 부여
-심미성 (UI/UX 평가)
-Material 3 디자인 지침 준수
-컬러 팔레트(Primary #6200EE 등)와 타이포그래피(Roboto) 적용
-Figma 기반 와이어프레임→프로토타입
-Auto Layout을 활용해 반응형 레이아웃 구현
-애니메이션·다크모드 지원
-버튼 클릭, 스탬프 획득 시 Lottie 애니메이션 적용
-시스템 다크모드 감지 후 다크 테마로 자동 전환
-안정성 (앱 실행 중 설계대로 동작)
-오프라인 퍼시스턴스
-Firestore 오프라인 캐시 활성화 → 네트워크 불안정 시에도 데이터 조회 가능
-오류 처리
-모든 네트워크 통신에 try-catch와 Result 래핑 처리, 사용자에게 적절한 에러 토스트/대화상자 안내
-백그라운드 작업
-Firestore 동기화 및 퀴즈 히스토리 저장 시 WorkManager를 사용하여 안정적으로 처리
-테스트
-Unit Test: ViewModel 로직(코스 추천 알고리즘, ML 유사도 비교) 최소 80% 이상 커버리지
-Instrumentation Test: 주요 Activity/Fragment UI 흐름 자동화 테스트 작성
-독창성 (참신함 평가)
-ML 클러스터링 기반 사진 인식 → 스탬프 부여
-기존의 QR/비콘 방식이 아닌, 실제 사진을 찍어서 해당 장소인지 판단하도록 함으로써 참신한 인터랙션 제공
-비회원 모드 + 익명 Firestore 동기화
-로그인 없이도 외부 DB에 동기화 가능하여 사용자 진입 장벽 최소화
-GPT 챗봇 연동
-단순한 정보 나열이 아니라 대화형 자연어 인터랙션을 통해 사용자 경험 차별화
+PNU Guide는 부산대학교 캠퍼스를 더욱 쉽고 재미있게 탐험할 수 있도록 도와주는 종합 모바일 가이드 앱입니다. 인터랙티브 코스, 스탬프 수집, 영상 라이브러리, 챗봇, 지도 네비게이션 등 다양한 기능을 한 곳에서 경험하세요.
+
+---
+
+## 주요 기능
+
+### 🎓 Interactive Courses
+
+* 캠퍼스 내 인기 코스를 단계별로 안내
+* 각 스팟마다 진행 상태(완료/미완료) 시각화
+* 검색·정렬 기능으로 원하는 코스를 빠르게 찾기
+
+### 📸 Stamp Collection
+
+* 사진 촬영 → 머신러닝 클러스터링 매칭으로 해당 스팟 인식
+* 퀴즈 풀기 (O/X, 객관식) 완료 시 스탬프 지급
+* 나만의 획득 스탬프 뱃지 북 구현
+
+### 🎥 Campus Video Library
+
+* 홈 화면에 대표 건물·단과대학 소개 영상 2개 하이라이트
+* “더보기” 클릭 시 유튜브 영상 목록 화면으로 이동
+* 검색창·가나다/인기 순 정렬 지원
+* 외부 YouTube 앱 호출로 바로 재생
+
+### 💬 Chatbot
+
+* ChatGPT API 연동
+* 캠퍼스 정보, 길찾기 팁, 행사 일정 등 대화형 질의응답
+* Coroutine 기반 비동기 처리로 부드러운 UX
+
+### 🗺️ Map & Navigation
+
+* Google Maps SDK 탑재
+* 현위치 기반 캠퍼스 전체 뷰 및 마커 표시
+* 경로 탐색(네비게이션) 기능
+* 클릭 한 번으로 스팟 상세 옵션 (사진 촬영 / 퀴즈) 접근
+
+### ⚙️ Settings & Profile
+
+* 익명 UUID 기반 간편 로그인
+* 앱 정보, 이용약관, 로그아웃/탈퇴
+* 최소한의 개인정보만 요구하여 부담 감소
+
+---
+
+## 기술 스택
+
+| 구분         | 기술 및 라이브러리                       |
+| ---------- | -------------------------------- |
+| 언어         | Kotlin                           |
+| UI         | XML 레이아웃, RecyclerView, Fragment |
+| 비동기 처리     | Kotlin Coroutines                |
+| 머신러닝       | TensorFlow Lite + 커스텀 클러스터링 모델   |
+| 지도         | Google Maps Android SDK          |
+| HTTP & API | Retrofit, OkHttp, ChatGPT API    |
+| 데이터베이스     | Firebase Firestore (외부 DB)       |
+| 외부 앱 연동    | Camera Intent, YouTube Intent    |
+
+---
+
+## 아키텍처
+
+* **MVVM** 패턴
+* **Repository** 레이어로 데이터 소스(ML 모델, Firestore, Map)를 추상화
+* **ViewModel** 에서 Coroutine으로 비동기 작업 수행
+* **LiveData / StateFlow** 를 사용해 UI 업데이트
+
+---
+
+## 설치 및 실행
+
+1. 저장소 클론
+
+   ```bash
+   git clone https://github.com/your-org/pnu-guide.git
+   ```
+2. Android Studio로 프로젝트 열기
+3. Google Maps API 키, Firebase 설정 파일(`google-services.json`) 추가
+4. `gradlew assembleDebug` 또는 IDE에서 실행
+
+---
+
+## 사용 가이드
+
+1. 앱 실행 후 **익명 로그인**
+2. **홈**: 이어서 진행하던 코스, 인기 스팟, 영상 바로가기
+3. **Courses**: 코스 리스트 → 상세 → 스팟 클릭
+4. **Stamps**: 사진 촬영 → ML 매칭 → 퀴즈 → 스탬프 수집
+5. **Chat**: 챗봇으로 캠퍼스 궁금증 해결
+6. 헤더 아이콘으로 **지도** 및 **설정** 화면 접근
+
+---
+
+## 기여
+
+1. Fork
+2. 브랜치 생성 (`git checkout -b feature/foo`)
+3. 커밋 (`git commit -m "Add foo feature"`)
+4. Push (`git push origin feature/foo`)
+5. Pull Request
+
+---
+
+*PNU Guide로 캠퍼스 탐험을 더욱 스마트하고 즐겁게!*
