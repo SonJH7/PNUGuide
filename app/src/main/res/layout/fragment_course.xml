@@ -74,7 +74,7 @@
                                 android:id="@+id/rs49bgap0hwg"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
-                                android:src="@mipmap/ic_launcher"
+                                android:src="@drawable/museum"
                                 android:scaleType="fitXY" />
                         </LinearLayout>
                         <EditText
@@ -289,7 +289,7 @@
                                 android:layout_width="100dp"
                                 android:layout_height="56dp"
                                 android:layout_marginEnd="16dp"
-                                android:src="@mipmap/ic_launcher"
+                                android:src="@drawable/jijil"
                                 android:scaleType="fitXY" />
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -299,7 +299,7 @@
                                     android:id="@+id/text_history_title_1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Historic Landmarks Tour"
+                                    android:text="박물관"
                                     android:textColor="#111416"
                                     android:textSize="16sp"
                                     android:textStyle="bold" />
@@ -308,7 +308,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="79dp"
-                                    android:text="Approx. 2 hours"
+                                    android:text="건물 번호: 412"
                                     android:textColor="#667582"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -327,7 +327,7 @@
                                 android:layout_width="100dp"
                                 android:layout_height="56dp"
                                 android:layout_marginEnd="16dp"
-                                android:src="@mipmap/ic_launcher"
+                                android:src="@drawable/jijil"
                                 android:scaleType="fitXY" />
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -337,7 +337,7 @@
                                     android:id="@+id/text_history_title_2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Museum Exploration"
+                                    android:text="지질박물관"
                                     android:textColor="#111416"
                                     android:textSize="16sp"
                                     android:textStyle="bold" />
@@ -346,7 +346,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="79dp"
-                                    android:text="Approx. 3 hours"
+                                    android:text="건물 번호: 414"
                                     android:textColor="#667582"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -365,7 +365,7 @@
                                 android:layout_width="100dp"
                                 android:layout_height="56dp"
                                 android:layout_marginEnd="16dp"
-                                android:src="@mipmap/ic_launcher"
+                                android:src="@drawable/ang"
                                 android:scaleType="fitXY" />
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -375,7 +375,7 @@
                                     android:id="@+id/text_history_title_3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Cultural Heritage Walk"
+                                    android:text="중앙 도서관"
                                     android:textColor="#111416"
                                     android:textSize="16sp"
                                     android:textStyle="bold" />
@@ -384,7 +384,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="79dp"
-                                    android:text="Approx. 1.5 hours"
+                                    android:text="건물 번호: 510"
                                     android:textColor="#667582"
                                     android:textSize="14sp" />
                             </LinearLayout>

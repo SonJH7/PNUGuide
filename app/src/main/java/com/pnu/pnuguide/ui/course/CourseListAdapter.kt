@@ -9,7 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pnu.pnuguide.R
 
-data class CourseItem(val title: String, val duration: String, val imageUrl: String)
+data class CourseItem(
+    val title: String,
+    val duration: String,
+    val imageUrl: String? = null,
+    val imageRes: Int? = null
+)
 
 class CourseListAdapter : RecyclerView.Adapter<CourseListAdapter.CourseViewHolder>() {
     private val items = mutableListOf<CourseItem>()
@@ -37,7 +42,8 @@ class CourseListAdapter : RecyclerView.Adapter<CourseListAdapter.CourseViewHolde
         private val desc: TextView = itemView.findViewById(R.id.text_course_desc)
 
         fun bind(item: CourseItem) {
-            Glide.with(itemView).load(item.imageUrl).into(image)
+            val src = item.imageRes ?: item.imageUrl
+            Glide.with(itemView).load(src).into(image)
             title.text = item.title
             desc.text = item.duration
         }
