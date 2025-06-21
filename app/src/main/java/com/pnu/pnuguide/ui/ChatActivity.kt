@@ -18,6 +18,9 @@ import com.pnu.pnuguide.ui.stamp.StampActivity
 import com.pnu.pnuguide.ui.setupHeader1
 import com.pnu.pnuguide.ui.chat.ChatAdapter
 import com.pnu.pnuguide.ui.chat.ChatViewModel
+import android.view.Menu
+import android.view.MenuItem
+import androidx.core.content.ContextCompat
 import kotlinx.coroutines.flow.collectLatest
 
 class ChatActivity : AppCompatActivity() {
@@ -71,5 +74,14 @@ class ChatActivity : AppCompatActivity() {
             }
         }
         bottomNav.menu.findItem(R.id.nav_chat).isChecked = true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_home_toolbar, menu)
+        menu.findItem(R.id.action_settings)?.apply {
+            icon = ContextCompat.getDrawable(this@ChatActivity, R.drawable.ic_settings)
+            setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        }
+        return true
     }
 }

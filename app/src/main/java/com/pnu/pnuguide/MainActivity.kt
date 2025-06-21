@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
+import android.view.Menu
+import android.view.MenuItem
+import androidx.core.content.ContextCompat
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pnu.pnuguide.ui.SettingsActivity
@@ -67,5 +70,14 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             bottomNav.selectedItemId = R.id.nav_home
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_home_toolbar, menu)
+        menu.findItem(R.id.action_settings)?.apply {
+            icon = ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_settings)
+            setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        }
+        return true
     }
 }

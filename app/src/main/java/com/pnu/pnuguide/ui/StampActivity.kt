@@ -16,6 +16,9 @@ import com.pnu.pnuguide.MainActivity
 import com.pnu.pnuguide.ui.chat.ChatActivity
 import com.pnu.pnuguide.ui.course.CourseActivity
 import com.pnu.pnuguide.ui.setupHeader1
+import android.view.Menu
+import android.view.MenuItem
+import androidx.core.content.ContextCompat
 
 class StampActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +55,15 @@ class StampActivity : AppCompatActivity() {
             }
         }
         bottomNav.menu.findItem(R.id.nav_stamp).isChecked = true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_home_toolbar, menu)
+        menu.findItem(R.id.action_settings)?.apply {
+            icon = ContextCompat.getDrawable(this@StampActivity, R.drawable.ic_settings)
+            setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+        }
+        return true
     }
 
     private fun openCampusMapPdf() {
