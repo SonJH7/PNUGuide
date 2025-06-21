@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="bottom_nav_height">96dp</dimen>
+    <!-- Reduced height so labels appear just below the icons without excessive spacing -->
+    <dimen name="bottom_nav_height">56dp</dimen>
     <dimen name="bottom_nav_icon_size">48dp</dimen>
 </resources>
