@@ -10,7 +10,7 @@ import com.pnu.pnuguide.ui.SettingsActivity
 import com.pnu.pnuguide.ui.setupHeader2
 import com.pnu.pnuguide.ui.home.HomeFragment
 import com.pnu.pnuguide.ui.map.MapActivity
-import com.pnu.pnuguide.ui.chat.ChatFragment
+import com.pnu.pnuguide.ui.chat.ChatActivity
 import com.pnu.pnuguide.ui.course.CourseActivity
 import com.pnu.pnuguide.ui.stamp.StampActivity
 
@@ -57,10 +57,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_chat -> {
-                    toolbar.setupHeader2(this, R.string.title_chatbot)
-                    supportFragmentManager.commit {
-                        replace(R.id.fragment_container, ChatFragment())
-                    }
+                    startActivity(Intent(this, ChatActivity::class.java))
                     true
                 }
                 else -> false
