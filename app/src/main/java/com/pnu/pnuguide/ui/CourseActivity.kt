@@ -92,6 +92,10 @@ class CourseActivity : AppCompatActivity() {
         recycler.layoutManager = LinearLayoutManager(this)
         adapter = CourseSearchAdapter()
         recycler.adapter = adapter
+        adapter.onItemClick = { item ->
+            SpotDetailDialogFragment.newInstance(item)
+                .show(supportFragmentManager, "detail")
+        }
         displayList.addAll(baseList)
         adapter.submitItems(displayList)
 
@@ -101,6 +105,40 @@ class CourseActivity : AppCompatActivity() {
         val sectionPopular: View = findViewById(R.id.section_popular)
         val sectionHistory: View = findViewById(R.id.section_history)
         val sectionStudy: View = findViewById(R.id.section_study)
+
+        fun showDetail(title: String, desc: String, image: Int) {
+            val item = CourseItem(title, desc, imageRes = image)
+            SpotDetailDialogFragment.newInstance(item)
+                .show(supportFragmentManager, "detail")
+        }
+
+        findViewById<View>(R.id.r4426ybbx5od).setOnClickListener {
+            showDetail("새벽벌 도서관", "건물번호: 420", R.drawable.sae_do)
+        }
+        findViewById<View>(R.id.r0r21uflcziqi).setOnClickListener {
+            showDetail("PNU V-SPACE", "건물번호: 303", R.drawable.vs)
+        }
+        findViewById<View>(R.id.r0augc34kguoi).setOnClickListener {
+            showDetail("법학관 모의 법정", "건물번호: 609", R.drawable.beopjeong)
+        }
+        findViewById<View>(R.id.card_history_1).setOnClickListener {
+            showDetail("박물관", "건물 번호: 412", R.drawable.museum)
+        }
+        findViewById<View>(R.id.card_history_2).setOnClickListener {
+            showDetail("지질박물관", "건물 번호: 414", R.drawable.jijil)
+        }
+        findViewById<View>(R.id.card_history_3).setOnClickListener {
+            showDetail("중앙 도서관", "건물 번호: 510", R.drawable.ang)
+        }
+        findViewById<View>(R.id.card_study_1).setOnClickListener {
+            showDetail("넉넉한 터", "건물번호: 203", R.drawable.nuck)
+        }
+        findViewById<View>(R.id.card_study_2).setOnClickListener {
+            showDetail("cafe 운죽정", "건물번호: 202", R.drawable.cafe)
+        }
+        findViewById<View>(R.id.card_study_3).setOnClickListener {
+            showDetail("진리의 뜰", "운죽정 뒷편", R.drawable.jinli)
+        }
 
         fun showSection(target: View) {
             sectionPopular.visibility = if (target == sectionPopular) View.VISIBLE else View.GONE

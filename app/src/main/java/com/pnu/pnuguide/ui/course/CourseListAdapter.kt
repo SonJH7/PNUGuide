@@ -18,6 +18,7 @@ data class CourseItem(
 
 class CourseListAdapter : RecyclerView.Adapter<CourseListAdapter.CourseViewHolder>() {
     private val items = mutableListOf<CourseItem>()
+    var onItemClick: ((CourseItem) -> Unit)? = null
 
     fun submitList(list: List<CourseItem>) {
         items.clear()
@@ -31,7 +32,11 @@ class CourseListAdapter : RecyclerView.Adapter<CourseListAdapter.CourseViewHolde
     }
 
     override fun onBindViewHolder(holder: CourseViewHolder, position: Int) {
-        holder.bind(items[position])
+        val item = items[position]
+        holder.bind(item)
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(item)
+        }
     }
 
     override fun getItemCount(): Int = items.size
