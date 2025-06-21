@@ -28,5 +28,8 @@
     <string name="title_popular">Popular</string>
     <string name="title_history">History</string>
     <string name="title_study">Study</string>
+    <string name="title_quiz">Quiz</string>
+    <string name="action_camera">Camera</string>
+    <string name="action_quiz">Quiz</string>
     <string name="hint_search_map">Search location</string>
 </resources>

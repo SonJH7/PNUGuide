@@ -20,6 +20,10 @@ class PopularActivity : AppCompatActivity() {
         recycler.layoutManager = LinearLayoutManager(this)
         val adapter = CourseListAdapter()
         recycler.adapter = adapter
+        adapter.onItemClick = { item ->
+            SpotDetailDialogFragment.newInstance(item)
+                .show(supportFragmentManager, "detail")
+        }
 
         val items = listOf(
             CourseItem(

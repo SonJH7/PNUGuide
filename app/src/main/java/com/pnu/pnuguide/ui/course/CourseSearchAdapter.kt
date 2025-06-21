@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class CourseSearchAdapter : RecyclerView.Adapter<CourseSearchAdapter.ViewHolder>() {
     private val items = mutableListOf<CourseItem>()
+    var onItemClick: ((CourseItem) -> Unit)? = null
 
     fun submitItems(list: List<CourseItem>) {
         items.clear()
@@ -29,7 +30,9 @@ class CourseSearchAdapter : RecyclerView.Adapter<CourseSearchAdapter.ViewHolder>
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
+        val item = items[position]
+        holder.bind(item)
+        holder.itemView.setOnClickListener { onItemClick?.invoke(item) }
     }
 
     override fun getItemCount(): Int = items.size
