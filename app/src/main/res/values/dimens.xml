@@ -1,4 +1,8 @@
 <resources>
     <dimen name="bottom_nav_height">72dp</dimen>
+    <!-- Size for selected item icon -->
+    <dimen name="bottom_nav_icon_size_selected">32dp</dimen>
+    <!-- Text size for selected item label -->
+    <dimen name="bottom_nav_text_size_selected">14sp</dimen>
 </resources>
 
