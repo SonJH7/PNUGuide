@@ -8,10 +8,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pnu.pnuguide.ui.SettingsActivity
 import com.pnu.pnuguide.ui.home.HomeFragment
-import com.pnu.pnuguide.ui.map.MapFragment
 import com.pnu.pnuguide.ui.map.MapActivity
-import androidx.core.content.ContextCompat
-import com.pnu.pnuguide.ui.profile.ProfileFragment
 import com.pnu.pnuguide.ui.chat.ChatFragment
 
 class MainActivity : AppCompatActivity() {
@@ -48,26 +45,12 @@ class MainActivity : AppCompatActivity() {
                     }
                     true
                 }
-                R.id.nav_map -> {
-                    toolbar.title = getString(R.string.title_map)
-                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
-                    toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24)
-                    toolbar.setNavigationOnClickListener {
-                        bottomNav.selectedItemId = R.id.nav_home
-                    }
-                    supportFragmentManager.commit {
-                        replace(R.id.fragment_container, MapFragment())
-                    }
+                R.id.nav_course -> {
+                    startActivity(Intent(this, CourseActivity::class.java))
                     true
                 }
-                R.id.nav_profile -> {
-                    toolbar.title = getString(R.string.title_profile)
-                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
-                    toolbar.navigationIcon = null
-                    toolbar.setNavigationOnClickListener(null)
-                    supportFragmentManager.commit {
-                        replace(R.id.fragment_container, ProfileFragment())
-                    }
+                R.id.nav_stamp -> {
+                    startActivity(Intent(this, StampActivity::class.java))
                     true
                 }
                 R.id.nav_chat -> {

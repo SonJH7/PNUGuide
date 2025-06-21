@@ -14,8 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pnu.pnuguide.R
 import com.pnu.pnuguide.MainActivity
 import com.pnu.pnuguide.ui.chat.ChatActivity
-import com.pnu.pnuguide.ui.map.MapActivity
-import com.pnu.pnuguide.ui.profile.ProfileActivity
+import com.pnu.pnuguide.ui.course.CourseActivity
 import com.pnu.pnuguide.ui.setupHeader1
 
 class StampActivity : AppCompatActivity() {
@@ -38,12 +37,11 @@ class StampActivity : AppCompatActivity() {
                     finish()
                     true
                 }
-                R.id.nav_map -> {
-                    startActivity(Intent(this, MapActivity::class.java))
+                R.id.nav_course -> {
+                    startActivity(Intent(this, CourseActivity::class.java))
                     true
                 }
-                R.id.nav_profile -> {
-                    startActivity(Intent(this, ProfileActivity::class.java))
+                R.id.nav_stamp -> {
                     true
                 }
                 R.id.nav_chat -> {
@@ -53,7 +51,7 @@ class StampActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        bottomNav.menu.findItem(R.id.nav_home).isChecked = true
+        bottomNav.menu.findItem(R.id.nav_stamp).isChecked = true
     }
 
     private fun openCampusMapPdf() {

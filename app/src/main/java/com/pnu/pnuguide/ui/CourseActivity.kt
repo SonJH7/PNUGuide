@@ -17,8 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pnu.pnuguide.R
 import com.pnu.pnuguide.MainActivity
 import com.pnu.pnuguide.ui.chat.ChatActivity
-import com.pnu.pnuguide.ui.map.MapActivity
-import com.pnu.pnuguide.ui.profile.ProfileActivity
+import com.pnu.pnuguide.ui.stamp.StampActivity
 import com.pnu.pnuguide.ui.setupHeader1
 
 class CourseActivity : AppCompatActivity() {
@@ -223,12 +222,11 @@ class CourseActivity : AppCompatActivity() {
                     finish()
                     true
                 }
-                R.id.nav_map -> {
-                    startActivity(Intent(this, MapActivity::class.java))
+                R.id.nav_course -> {
                     true
                 }
-                R.id.nav_profile -> {
-                    startActivity(Intent(this, ProfileActivity::class.java))
+                R.id.nav_stamp -> {
+                    startActivity(Intent(this, StampActivity::class.java))
                     true
                 }
                 R.id.nav_chat -> {
@@ -238,7 +236,7 @@ class CourseActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        bottomNav.menu.findItem(R.id.nav_home).isChecked = true
+        bottomNav.menu.findItem(R.id.nav_course).isChecked = true
     }
 
     private fun filterList() {
