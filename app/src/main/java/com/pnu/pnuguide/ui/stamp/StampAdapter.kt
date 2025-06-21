@@ -1,38 +1,39 @@
 package com.pnu.pnuguide.ui.stamp
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.pnu.pnuguide.R
+import com.pnu.pnuguide.data.Stamp
+import com.pnu.pnuguide.databinding.ItemStampRowBinding
 
-class StampAdapter : RecyclerView.Adapter<StampAdapter.StampViewHolder>() {
-    private val items = MutableList(8) { false }
-
-    fun submitList(list: List<Boolean>) {
-        for (i in items.indices) {
-            items[i] = list.getOrElse(i) { false }
-        }
-        notifyDataSetChanged()
-    }
+class StampAdapter(
+    private val onVerify: (Stamp) -> Unit
+) : ListAdapter<Stamp, StampAdapter.StampViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StampViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_stamp_slot, parent, false)
-        return StampViewHolder(view)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ItemStampRowBinding.inflate(inflater, parent, false)
+        return StampViewHolder(binding)
     }
-
-    override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: StampViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind(getItem(position))
     }
 
-    class StampViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val image: ImageView = itemView.findViewById(R.id.image_stamp)
-        fun bind(collected: Boolean) {
-            image.visibility = if (collected) View.VISIBLE else View.GONE
+    inner class StampViewHolder(private val binding: ItemStampRowBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: Stamp) {
+            binding.textName.text = item.name
+            binding.buttonVerify.setOnClickListener { onVerify(item) }
+            binding.textName.alpha = if (item.collected) 0.5f else 1f
+            binding.buttonVerify.isEnabled = !item.collected
         }
+    }
+
+    private object DiffCallback : DiffUtil.ItemCallback<Stamp>() {
+        override fun areItemsTheSame(oldItem: Stamp, newItem: Stamp): Boolean = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: Stamp, newItem: Stamp): Boolean = oldItem == newItem
     }
 }
