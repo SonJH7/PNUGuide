@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.pnu.pnuguide.databinding.FragmentProfileBinding
 import com.pnu.pnuguide.ui.LoginActivity
+import com.pnu.pnuguide.ui.profile.EditProfileActivity
 
 class ProfileFragment : Fragment() {
 
@@ -44,7 +45,8 @@ class ProfileFragment : Fragment() {
         }
 
         binding.buttonEdit.setOnClickListener {
-            // Navigate to EditProfileActivity (implementation not shown)
+            // Launch the EditProfileActivity when the user taps the button
+            startActivity(Intent(requireContext(), EditProfileActivity::class.java))
         }
     }
 

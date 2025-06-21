@@ -28,6 +28,10 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_nav_height"
         android:background="@color/background_light"
+        app:itemIconSize="@dimen/bottom_nav_icon_size_selected"
+        app:itemIconTint="@color/bottom_nav_selector"
+        app:itemTextAppearanceActive="@style/BottomNavTextActive"
+        app:itemTextAppearanceInactive="@style/BottomNavTextInactive"
         app:menu="@menu/menu_bottom_nav" />
 
 </LinearLayout>

@@ -76,7 +76,10 @@ class StampFragment : Fragment() {
             }
         }
 
-        binding.toolbarStamp.setNavigationOnClickListener { requireActivity().finish() }
+        // Return to the previous screen (typically Home) when back icon is pressed
+        binding.toolbarStamp.setNavigationOnClickListener {
+            activity?.finish()
+        }
     }
 
     private fun startCamera() {
