@@ -129,7 +129,7 @@ class CourseActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        bottomNav.selectedItemId = R.id.nav_home
+        bottomNav.menu.findItem(R.id.nav_home).isChecked = true
     }
 
     private fun filterList() {
