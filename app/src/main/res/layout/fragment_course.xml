@@ -90,6 +90,14 @@
                             android:paddingVertical="12dp"
                             android:paddingLeft="8dp"
                             android:paddingRight="16dp" />
+                        <TextView
+                            android:id="@+id/btn_cancel_search"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="12dp"
+                            android:text="Cancel"
+                            android:textColor="#111416"
+                            android:visibility="gone" />
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/r0ynj2pkd7ew9"
@@ -139,7 +147,12 @@
                             android:text="Study &amp; Rest" />
                     </LinearLayout>
                     <LinearLayout
-                        android:id="@+id/r4426ybbx5od"
+                        android:id="@+id/section_popular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:id="@+id/r4426ybbx5od"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
@@ -177,8 +190,8 @@
                                 android:text="Approx. 2 hours" />
                         </LinearLayout>
                     </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/r0r21uflcziqi"
+                        <LinearLayout
+                            android:id="@+id/r0r21uflcziqi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
@@ -216,8 +229,8 @@
                                 android:text="Approx. 3 hours" />
                         </LinearLayout>
                     </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/r0augc34kguoi"
+                        <LinearLayout
+                            android:id="@+id/r0augc34kguoi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
@@ -254,6 +267,31 @@
                                 android:layout_width="wrap_content"
                                 android:text="Approx. 1.5 hours" />
                         </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/section_history"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:visibility="gone">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="History Course Screen" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/section_study"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:visibility="gone">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Study Course Screen" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

@@ -19,9 +19,6 @@ import com.pnu.pnuguide.ui.chat.ChatActivity
 import com.pnu.pnuguide.ui.map.MapActivity
 import com.pnu.pnuguide.ui.profile.ProfileActivity
 import com.pnu.pnuguide.ui.setupHeader1
-import com.pnu.pnuguide.ui.course.PopularActivity
-import com.pnu.pnuguide.ui.course.HistoryActivity
-import com.pnu.pnuguide.ui.course.StudyActivity
 
 class CourseActivity : AppCompatActivity() {
     private var searchQuery: String = ""
@@ -61,15 +58,30 @@ class CourseActivity : AppCompatActivity() {
         displayList.addAll(baseList)
         adapter.submitItems(displayList)
 
+        val scrollArea: View = findViewById(R.id.rm27nijip3z)
+        val cancelBtn: TextView = findViewById(R.id.btn_cancel_search)
+        val sectionPopular: View = findViewById(R.id.section_popular)
+        val sectionHistory: View = findViewById(R.id.section_history)
+        val sectionStudy: View = findViewById(R.id.section_study)
+
+        fun showSection(target: View) {
+            sectionPopular.visibility = if (target == sectionPopular) View.VISIBLE else View.GONE
+            sectionHistory.visibility = if (target == sectionHistory) View.VISIBLE else View.GONE
+            sectionStudy.visibility = if (target == sectionStudy) View.VISIBLE else View.GONE
+        }
+
         val searchEdit: EditText = findViewById(R.id.r9hg358v9thk)
-        searchEdit.setOnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                findViewById<View>(R.id.rm27nijip3z).visibility = View.GONE
-                recycler.visibility = View.VISIBLE
-            } else if (searchEdit.text.isEmpty()) {
-                recycler.visibility = View.GONE
-                findViewById<View>(R.id.rm27nijip3z).visibility = View.VISIBLE
-            }
+        searchEdit.setOnClickListener {
+            scrollArea.visibility = View.GONE
+            recycler.visibility = View.VISIBLE
+            cancelBtn.visibility = View.VISIBLE
+        }
+        cancelBtn.setOnClickListener {
+            recycler.visibility = View.GONE
+            scrollArea.visibility = View.VISIBLE
+            cancelBtn.visibility = View.GONE
+            searchEdit.text.clear()
+            searchEdit.clearFocus()
         }
         searchEdit.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -97,13 +109,13 @@ class CourseActivity : AppCompatActivity() {
         })
 
         findViewById<TextView>(R.id.rguxz9lullzn).setOnClickListener {
-            startActivity(Intent(this, PopularActivity::class.java))
+            showSection(sectionPopular)
         }
         findViewById<TextView>(R.id.r2qlk2kqy8g4).setOnClickListener {
-            startActivity(Intent(this, HistoryActivity::class.java))
+            showSection(sectionHistory)
         }
         findViewById<TextView>(R.id.rygry7veadsj).setOnClickListener {
-            startActivity(Intent(this, StudyActivity::class.java))
+            showSection(sectionStudy)
         }
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
