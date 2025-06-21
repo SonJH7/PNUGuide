@@ -11,10 +11,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.ImageView
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,7 +23,6 @@ import com.pnu.pnuguide.ui.setupHeader1
 
 class CourseActivity : AppCompatActivity() {
     private var searchQuery: String = ""
-    private var searchJob: Job? = null
     private lateinit var adapter: CourseSearchAdapter
     // List of buildings displayed when searching.
     // Update names, numbers and images here if needed.
@@ -173,12 +168,8 @@ class CourseActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                searchJob?.cancel()
-                searchJob = lifecycleScope.launch {
-                    delay(300)
-                    searchQuery = s.toString()
-                    filterList()
-                }
+                searchQuery = s.toString()
+                filterList()
             }
 
             override fun afterTextChanged(s: Editable?) {}
