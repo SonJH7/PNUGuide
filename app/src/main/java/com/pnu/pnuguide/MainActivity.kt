@@ -11,6 +11,8 @@ import com.pnu.pnuguide.ui.setupHeader2
 import com.pnu.pnuguide.ui.home.HomeFragment
 import com.pnu.pnuguide.ui.map.MapActivity
 import com.pnu.pnuguide.ui.chat.ChatFragment
+import com.pnu.pnuguide.ui.course.CourseActivity
+import com.pnu.pnuguide.ui.stamp.StampActivity
 
 class MainActivity : AppCompatActivity() {
 
