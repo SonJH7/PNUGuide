@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Reduced height so labels appear just below the icons without excessive spacing -->
-    <dimen name="bottom_nav_height">56dp</dimen>
+    <!-- Increased height and icon offset so icons start lower inside the bar -->
+    <dimen name="bottom_nav_height">72dp</dimen>
     <dimen name="bottom_nav_icon_size">48dp</dimen>
 </resources>

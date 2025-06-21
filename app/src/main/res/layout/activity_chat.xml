@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_nav_height"
         android:background="@color/background_light"
-        android:paddingTop="4dp"
+        android:paddingTop="20dp"
         android:paddingBottom="4dp"
         app:itemIconSize="@dimen/bottom_nav_icon_size"
         app:labelVisibilityMode="unlabeled"
