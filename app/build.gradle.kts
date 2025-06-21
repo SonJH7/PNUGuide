@@ -118,6 +118,9 @@ dependencies {
     // WorkManager
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
+    // Image loading
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
     // TensorFlow Lite and Lottie
     implementation("org.tensorflow:tensorflow-lite:2.15.0")
     implementation("org.tensorflow:tensorflow-lite-support:0.4.4")

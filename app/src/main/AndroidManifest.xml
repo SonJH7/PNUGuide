@@ -21,15 +21,15 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
+        <activity android:name="com.pnu.pnuguide.ui.OnboardingActivity" />
         <activity
-            android:name="com.pnu.pnuguide.ui.OnboardingActivity"
+            android:name="com.pnu.pnuguide.ui.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.pnu.pnuguide.ui.LoginActivity" />
         <activity android:name="com.pnu.pnuguide.ui.signup.SignUpActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name="com.pnu.pnuguide.ui.home.HomeActivity" />
