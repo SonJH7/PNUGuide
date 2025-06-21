@@ -58,8 +58,8 @@ class CourseActivity : AppCompatActivity() {
         displayList.addAll(baseList)
         adapter.submitItems(displayList)
 
-        val scrollArea: View = findViewById(R.id.rm27nijip3z)
-        val cancelBtn: TextView = findViewById(R.id.btn_cancel_search)
+        val cancelBtn: View = findViewById(R.id.btn_cancel_search)
+        val categoryRow: View = findViewById(R.id.r0ynj2pkd7ew9)
         val sectionPopular: View = findViewById(R.id.section_popular)
         val sectionHistory: View = findViewById(R.id.section_history)
         val sectionStudy: View = findViewById(R.id.section_study)
@@ -71,16 +71,20 @@ class CourseActivity : AppCompatActivity() {
         }
 
         val searchEdit: EditText = findViewById(R.id.r9hg358v9thk)
-        searchEdit.setOnClickListener {
-            if (recycler.visibility != View.VISIBLE) {
-                scrollArea.visibility = View.GONE
+        searchEdit.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus && recycler.visibility != View.VISIBLE) {
+                categoryRow.visibility = View.GONE
+                sectionPopular.visibility = View.GONE
+                sectionHistory.visibility = View.GONE
+                sectionStudy.visibility = View.GONE
                 recycler.visibility = View.VISIBLE
                 cancelBtn.visibility = View.VISIBLE
             }
         }
         cancelBtn.setOnClickListener {
             recycler.visibility = View.GONE
-            scrollArea.visibility = View.VISIBLE
+            categoryRow.visibility = View.VISIBLE
+            showSection(sectionPopular)
             cancelBtn.visibility = View.GONE
             searchEdit.text.clear()
             searchEdit.clearFocus()
