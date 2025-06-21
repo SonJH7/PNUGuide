@@ -7,12 +7,16 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.pnu.pnuguide.R
 import com.google.android.material.button.MaterialButton
+import com.pnu.pnuguide.MainActivity
+import com.pnu.pnuguide.data.AuthRepository
+import com.pnu.pnuguide.ui.LoginActivity
 
 class OnboardingActivity : AppCompatActivity() {
     private val handler = Handler(Looper.getMainLooper())
 
     private val navigateRunnable = Runnable {
-        startActivity(Intent(this, LoginActivity::class.java))
+        val dest = if (AuthRepository.currentUser() != null) MainActivity::class.java else LoginActivity::class.java
+        startActivity(Intent(this, dest))
         finish()
     }
 
@@ -28,7 +32,11 @@ class OnboardingActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        handler.postDelayed(navigateRunnable, 2000)
+        if (AuthRepository.currentUser() != null) {
+            navigateRunnable.run()
+        } else {
+            handler.postDelayed(navigateRunnable, 2000)
+        }
     }
 
     override fun onPause() {
