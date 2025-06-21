@@ -3,7 +3,6 @@ package com.pnu.pnuguide.ui.stamp
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,14 +16,6 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
 import androidx.recyclerview.widget.GridLayoutManager
 
 import com.pnu.pnuguide.databinding.FragmentStampBinding
-import java.io.File
-import java.text.SimpleDateFormat
-import java.util.Locale
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageCapture
-import androidx.camera.core.ImageCaptureException
-import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.core.content.ContextCompat.getMainExecutor
 
 class StampFragment : Fragment() {
 
@@ -35,11 +26,19 @@ class StampFragment : Fragment() {
         AndroidViewModelFactory.getInstance(requireActivity().application)
     }
 
-    private lateinit var imageCapture: ImageCapture
+    private val takePicture =
+        registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
+            if (bitmap != null) {
+                viewModel.processBitmap(bitmap)
+            } else {
+                Toast.makeText(requireContext(), getString(com.pnu.pnuguide.R.string.stamp_failed), Toast.LENGTH_SHORT).show()
+            }
+        }
 
     private val requestPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
-            if (granted) startCamera() else Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
+            if (granted) takePicture.launch(null)
+            else Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
         }
 
     override fun onCreateView(
@@ -71,40 +70,13 @@ class StampFragment : Fragment() {
         binding.toolbarStamp.setNavigationOnClickListener { requireActivity().finish() }
         binding.buttonCapture.setOnClickListener {
             if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                startCamera()
+                takePicture.launch(null)
             } else {
                 requestPermission.launch(Manifest.permission.CAMERA)
             }
         }
     }
 
-    private fun startCamera() {
-        val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
-        cameraProviderFuture.addListener({
-            val cameraProvider = cameraProviderFuture.get()
-            imageCapture = ImageCapture.Builder().build()
-            try {
-                cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(this, CameraSelector.DEFAULT_BACK_CAMERA, imageCapture)
-                capturePhoto()
-            } catch (e: Exception) {
-                Log.e("StampFragment", "Use case binding failed", e)
-            }
-        }, getMainExecutor(requireContext()))
-    }
-
-    private fun capturePhoto() {
-        val file = File(requireContext().cacheDir, SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(System.currentTimeMillis()) + ".jpg")
-        val output = ImageCapture.OutputFileOptions.Builder(file).build()
-        imageCapture.takePicture(output, getMainExecutor(requireContext()), object : ImageCapture.OnImageSavedCallback {
-            override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                viewModel.processImage(file)
-            }
-            override fun onError(exception: ImageCaptureException) {
-                Toast.makeText(requireContext(), getString(com.pnu.pnuguide.R.string.stamp_failed), Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

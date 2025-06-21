@@ -29,6 +29,12 @@ class StampViewModel(private val app: Application) : AndroidViewModel(app) {
     fun processImage(file: File) {
         viewModelScope.launch(Dispatchers.IO) {
             val bitmap = BitmapFactory.decodeFile(file.absolutePath)
+            processBitmap(bitmap)
+        }
+    }
+
+    fun processBitmap(bitmap: Bitmap) {
+        viewModelScope.launch(Dispatchers.IO) {
             val match = MLImageHelper.matchSpot(bitmap)
             if (match != null) {
                 markNextStamp()
