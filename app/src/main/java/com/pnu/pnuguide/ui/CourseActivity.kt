@@ -11,6 +11,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.ImageView
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,23 +27,36 @@ import com.pnu.pnuguide.ui.setupHeader1
 
 class CourseActivity : AppCompatActivity() {
     private var searchQuery: String = ""
+    private var searchJob: Job? = null
     private lateinit var adapter: CourseSearchAdapter
+    // List of buildings displayed when searching.
+    // Update names, numbers and images here if needed.
     private val baseList = listOf(
-        CourseItem(
-            "Campus Highlights Tour",
-            "Approx. 2 hours",
-            "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/z7s2j8n3_expires_30_days.png"
-        ),
-        CourseItem(
-            "Historic Landmarks Tour",
-            "Approx. 3 hours",
-            "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/hc760uhy_expires_30_days.png"
-        ),
-        CourseItem(
-            "Nature Discovery Walk",
-            "Approx. 1.5 hours",
-            "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/yb4j87iw_expires_30_days.png"
-        )
+        CourseItem("Building 1", "건물번호: 101", imageRes = R.drawable.cafe),
+        CourseItem("Building 2", "건물번호: 102", imageRes = R.drawable.jinli),
+        CourseItem("Building 3", "건물번호: 103", imageRes = R.drawable.nuck),
+        CourseItem("Building 4", "건물번호: 104", imageRes = R.drawable.cafe),
+        CourseItem("Building 5", "건물번호: 105", imageRes = R.drawable.jinli),
+        CourseItem("Building 6", "건물번호: 106", imageRes = R.drawable.nuck),
+        CourseItem("Building 7", "건물번호: 107", imageRes = R.drawable.cafe),
+        CourseItem("Building 8", "건물번호: 108", imageRes = R.drawable.jinli),
+        CourseItem("Building 9", "건물번호: 109", imageRes = R.drawable.nuck),
+        CourseItem("Building 10", "건물번호: 110", imageRes = R.drawable.cafe),
+        CourseItem("Building 11", "건물번호: 111", imageRes = R.drawable.jinli),
+        CourseItem("Building 12", "건물번호: 112", imageRes = R.drawable.nuck),
+        CourseItem("Building 13", "건물번호: 113", imageRes = R.drawable.cafe),
+        CourseItem("Building 14", "건물번호: 114", imageRes = R.drawable.jinli),
+        CourseItem("Building 15", "건물번호: 115", imageRes = R.drawable.nuck),
+        CourseItem("Building 16", "건물번호: 116", imageRes = R.drawable.cafe),
+        CourseItem("Building 17", "건물번호: 117", imageRes = R.drawable.jinli),
+        CourseItem("Building 18", "건물번호: 118", imageRes = R.drawable.nuck),
+        CourseItem("Building 19", "건물번호: 119", imageRes = R.drawable.cafe),
+        CourseItem("Building 20", "건물번호: 120", imageRes = R.drawable.jinli),
+        CourseItem("Building 21", "건물번호: 121", imageRes = R.drawable.nuck),
+        CourseItem("Building 22", "건물번호: 122", imageRes = R.drawable.cafe),
+        CourseItem("Building 23", "건물번호: 123", imageRes = R.drawable.jinli),
+        CourseItem("Building 24", "건물번호: 124", imageRes = R.drawable.nuck),
+        CourseItem("Building 25", "건물번호: 125", imageRes = R.drawable.cafe)
     )
     private val displayList = mutableListOf<CourseItem>()
 
@@ -79,6 +96,7 @@ class CourseActivity : AppCompatActivity() {
         adapter.submitItems(displayList)
 
         val cancelBtn: View = findViewById(R.id.btn_cancel_search)
+        val scrollView: View = findViewById(R.id.rm27nijip3z)
         val categoryRow: View = findViewById(R.id.r0ynj2pkd7ew9)
         val sectionPopular: View = findViewById(R.id.section_popular)
         val sectionHistory: View = findViewById(R.id.section_history)
@@ -97,6 +115,7 @@ class CourseActivity : AppCompatActivity() {
                 sectionPopular.visibility = View.GONE
                 sectionHistory.visibility = View.GONE
                 sectionStudy.visibility = View.GONE
+                scrollView.visibility = View.GONE
                 recycler.visibility = View.VISIBLE
                 cancelBtn.visibility = View.VISIBLE
             }
@@ -105,6 +124,7 @@ class CourseActivity : AppCompatActivity() {
             recycler.visibility = View.GONE
             categoryRow.visibility = View.VISIBLE
             showSection(sectionPopular)
+            scrollView.visibility = View.VISIBLE
             cancelBtn.visibility = View.GONE
             searchEdit.text.clear()
             searchEdit.clearFocus()
@@ -116,8 +136,12 @@ class CourseActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                searchQuery = s.toString()
-                filterList()
+                searchJob?.cancel()
+                searchJob = lifecycleScope.launch {
+                    delay(300)
+                    searchQuery = s.toString()
+                    filterList()
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {}

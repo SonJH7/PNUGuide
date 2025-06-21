@@ -15,6 +15,50 @@
         android:titleTextColor="@color/text_primary"
         app:titleCentered="true" />
 
+    <LinearLayout
+        android:id="@+id/search_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="16dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tl12bl12bf2f2f4"
+            android:paddingVertical="12dp"
+            android:paddingLeft="16dp"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/rs49bgap0hwg"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/museum"
+                android:scaleType="fitXY" />
+        </LinearLayout>
+        <EditText
+            android:inputType="text"
+            android:hint="Search  course"
+            android:id="@+id/r9hg358v9thk"
+            android:textColor="#667582"
+            android:textSize="16sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/tr12br12bf2f2f4"
+            android:paddingVertical="12dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="16dp" />
+        <ImageButton
+            android:id="@+id/btn_cancel_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="12dp"
+            android:src="@drawable/ic_close"
+            android:visibility="gone" />
+    </LinearLayout>
+
     <!-- Course content -->
     <ScrollView
         android:id="@+id/rm27nijip3z"
@@ -54,50 +98,6 @@
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:text="Courses" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/r47yj119jajl"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingVertical="12dp"
-                        android:paddingHorizontal="16dp"
-                        android:orientation="horizontal">
-                        <LinearLayout
-                            android:id="@+id/rp9tw0mdt5jh"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/tl12bl12bf2f2f4"
-                            android:paddingVertical="12dp"
-                            android:paddingLeft="16dp"
-                            android:orientation="vertical">
-                            <ImageView
-                                android:id="@+id/rs49bgap0hwg"
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:src="@drawable/museum"
-                                android:scaleType="fitXY" />
-                        </LinearLayout>
-                        <EditText
-                            android:inputType="text"
-                            android:hint="Search  course"
-                            android:id="@+id/r9hg358v9thk"
-                            android:textColor="#667582"
-                            android:textSize="16sp"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/tr12br12bf2f2f4"
-                            android:paddingVertical="12dp"
-                            android:paddingLeft="8dp"
-                            android:paddingRight="16dp" />
-                        <ImageButton
-                            android:id="@+id/btn_cancel_search"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@android:color/transparent"
-                            android:padding="12dp"
-                            android:src="@drawable/ic_close"
-                            android:visibility="gone" />
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/r0ynj2pkd7ew9"
