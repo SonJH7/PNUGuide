@@ -72,9 +72,11 @@ class CourseActivity : AppCompatActivity() {
 
         val searchEdit: EditText = findViewById(R.id.r9hg358v9thk)
         searchEdit.setOnClickListener {
-            scrollArea.visibility = View.GONE
-            recycler.visibility = View.VISIBLE
-            cancelBtn.visibility = View.VISIBLE
+            if (recycler.visibility != View.VISIBLE) {
+                scrollArea.visibility = View.GONE
+                recycler.visibility = View.VISIBLE
+                cancelBtn.visibility = View.VISIBLE
+            }
         }
         cancelBtn.setOnClickListener {
             recycler.visibility = View.GONE
@@ -82,6 +84,9 @@ class CourseActivity : AppCompatActivity() {
             cancelBtn.visibility = View.GONE
             searchEdit.text.clear()
             searchEdit.clearFocus()
+            displayList.clear()
+            displayList.addAll(baseList)
+            adapter.submitItems(displayList)
         }
         searchEdit.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
