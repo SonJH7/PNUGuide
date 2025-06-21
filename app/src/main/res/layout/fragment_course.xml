@@ -90,13 +90,13 @@
                             android:paddingVertical="12dp"
                             android:paddingLeft="8dp"
                             android:paddingRight="16dp" />
-                        <TextView
+                        <ImageButton
                             android:id="@+id/btn_cancel_search"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
                             android:padding="12dp"
-                            android:text="Cancel"
-                            android:textColor="#111416"
+                            android:src="@drawable/ic_close"
                             android:visibility="gone" />
                     </LinearLayout>
                     <LinearLayout
