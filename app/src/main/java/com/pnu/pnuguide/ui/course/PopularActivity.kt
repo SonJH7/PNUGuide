@@ -25,7 +25,7 @@ class PopularActivity : AppCompatActivity() {
             CourseItem(
                 "Campus Highlights Tour",
                 "Approx. 2 hours",
-                "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/z7s2j8n3_expires_30_days.png"
+                imageRes = R.drawable.museum
             ),
             CourseItem(
                 "Historic Landmarks Tour",
