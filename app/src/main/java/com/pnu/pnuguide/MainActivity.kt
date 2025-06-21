@@ -13,6 +13,8 @@ import com.pnu.pnuguide.ui.map.MapActivity
 import androidx.core.content.ContextCompat
 import com.pnu.pnuguide.ui.profile.ProfileFragment
 import com.pnu.pnuguide.ui.chat.ChatFragment
+import com.pnu.pnuguide.ui.LoginActivity
+import com.pnu.pnuguide.data.AuthRepository
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,11 +27,18 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.setOnMenuItemClickListener { item ->
-            if (item.itemId == R.id.action_settings) {
-                startActivity(Intent(this, SettingsActivity::class.java))
-                true
-            } else {
-                false
+            when (item.itemId) {
+                R.id.action_settings -> {
+                    startActivity(Intent(this, SettingsActivity::class.java))
+                    true
+                }
+                R.id.action_logout -> {
+                    AuthRepository.signOut()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
+                    true
+                }
+                else -> false
             }
         }
 
