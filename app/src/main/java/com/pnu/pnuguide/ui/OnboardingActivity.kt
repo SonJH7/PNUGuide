@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import com.pnu.pnuguide.databinding.ActivityOnboardingBinding
+import com.pnu.pnuguide.R
+import com.google.android.material.button.MaterialButton
 
 class OnboardingActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityOnboardingBinding
     private val handler = Handler(Looper.getMainLooper())
 
     private val navigateRunnable = Runnable {
@@ -18,10 +18,9 @@ class OnboardingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityOnboardingBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_onboarding)
 
-        binding.buttonGetStarted.setOnClickListener {
+        findViewById<MaterialButton>(R.id.button_get_started).setOnClickListener {
             handler.removeCallbacks(navigateRunnable)
             navigateRunnable.run()
         }
