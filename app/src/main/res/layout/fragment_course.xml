@@ -274,24 +274,242 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="16dp"
                         android:visibility="gone">
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:id="@+id/card_history_1"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="History Course Screen" />
+                            android:gravity="center_vertical"
+                            android:background="#FFFFFF"
+                            android:paddingVertical="12dp"
+                            android:paddingHorizontal="16dp"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:id="@+id/image_history_1"
+                                android:layout_width="100dp"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="16dp"
+                                android:src="@mipmap/ic_launcher"
+                                android:scaleType="fitXY" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:id="@+id/text_history_title_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Historic Landmarks Tour"
+                                    android:textColor="#111416"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                                <TextView
+                                    android:id="@+id/text_history_desc_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="79dp"
+                                    android:text="Approx. 2 hours"
+                                    android:textColor="#667582"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/card_history_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:background="#FFFFFF"
+                            android:paddingVertical="12dp"
+                            android:paddingHorizontal="16dp"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:id="@+id/image_history_2"
+                                android:layout_width="100dp"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="16dp"
+                                android:src="@mipmap/ic_launcher"
+                                android:scaleType="fitXY" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:id="@+id/text_history_title_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Museum Exploration"
+                                    android:textColor="#111416"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                                <TextView
+                                    android:id="@+id/text_history_desc_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="79dp"
+                                    android:text="Approx. 3 hours"
+                                    android:textColor="#667582"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/card_history_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:background="#FFFFFF"
+                            android:paddingVertical="12dp"
+                            android:paddingHorizontal="16dp"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:id="@+id/image_history_3"
+                                android:layout_width="100dp"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="16dp"
+                                android:src="@mipmap/ic_launcher"
+                                android:scaleType="fitXY" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:id="@+id/text_history_title_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cultural Heritage Walk"
+                                    android:textColor="#111416"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                                <TextView
+                                    android:id="@+id/text_history_desc_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="79dp"
+                                    android:text="Approx. 1.5 hours"
+                                    android:textColor="#667582"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/section_study"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="16dp"
                         android:visibility="gone">
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:id="@+id/card_study_1"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Study Course Screen" />
+                            android:gravity="center_vertical"
+                            android:background="#FFFFFF"
+                            android:paddingVertical="12dp"
+                            android:paddingHorizontal="16dp"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:id="@+id/image_study_1"
+                                android:layout_width="100dp"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="16dp"
+                                android:src="@mipmap/ic_launcher"
+                                android:scaleType="fitXY" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:id="@+id/text_study_title_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Library Tour"
+                                    android:textColor="#111416"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                                <TextView
+                                    android:id="@+id/text_study_desc_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="79dp"
+                                    android:text="Approx. 1 hour"
+                                    android:textColor="#667582"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/card_study_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:background="#FFFFFF"
+                            android:paddingVertical="12dp"
+                            android:paddingHorizontal="16dp"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:id="@+id/image_study_2"
+                                android:layout_width="100dp"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="16dp"
+                                android:src="@mipmap/ic_launcher"
+                                android:scaleType="fitXY" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:id="@+id/text_study_title_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Quiet Cafes"
+                                    android:textColor="#111416"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                                <TextView
+                                    android:id="@+id/text_study_desc_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="79dp"
+                                    android:text="Approx. 2 hours"
+                                    android:textColor="#667582"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/card_study_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:background="#FFFFFF"
+                            android:paddingVertical="12dp"
+                            android:paddingHorizontal="16dp"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:id="@+id/image_study_3"
+                                android:layout_width="100dp"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="16dp"
+                                android:src="@mipmap/ic_launcher"
+                                android:scaleType="fitXY" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:id="@+id/text_study_title_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Rest Areas"
+                                    android:textColor="#111416"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                                <TextView
+                                    android:id="@+id/text_study_desc_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="79dp"
+                                    android:text="Approx. 45 min"
+                                    android:textColor="#667582"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
