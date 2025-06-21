@@ -25,5 +25,8 @@
     <string name="title_course">Course</string>
     <string name="title_stamp">Stamp</string>
     <string name="title_chatbot">Chatbot</string>
+    <string name="title_popular">Popular</string>
+    <string name="title_history">History</string>
+    <string name="title_study">Study</string>
     <string name="hint_search_map">Search location</string>
 </resources>
