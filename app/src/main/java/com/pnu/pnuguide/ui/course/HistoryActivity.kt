@@ -23,19 +23,19 @@ class HistoryActivity : AppCompatActivity() {
 
         val items = listOf(
             CourseItem(
-                "Historic Landmarks Tour",
-                "Approx. 2 hours",
-                "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/z7s2j8n3_expires_30_days.png"
+                "박물관",
+                "건물 번호: 412",
+                imageRes = R.drawable.museum
             ),
             CourseItem(
-                "Museum Exploration",
-                "Approx. 3 hours",
-                "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/hc760uhy_expires_30_days.png"
+                "지질박물관",
+                "건물 번호: 414",
+                imageRes = R.drawable.jijil
             ),
             CourseItem(
-                "Cultural Heritage Walk",
-                "Approx. 1.5 hours",
-                "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/yb4j87iw_expires_30_days.png"
+                "중앙 도서관",
+                "건물 번호: 510",
+                imageRes = R.drawable.ang
             )
         )
         adapter.submitList(items)
