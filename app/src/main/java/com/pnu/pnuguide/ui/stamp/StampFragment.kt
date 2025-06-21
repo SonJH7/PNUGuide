@@ -41,4 +41,5 @@ class StampFragment : Fragment() {
             viewModel.processImage(bitmap)
         }
     }
+
 }
