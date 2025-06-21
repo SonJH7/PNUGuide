@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Increased height and icon offset so icons start lower inside the bar -->
-    <dimen name="bottom_nav_height">72dp</dimen>
+    <!-- Default height so text can sit directly below icons -->
+    <dimen name="bottom_nav_height">56dp</dimen>
     <dimen name="bottom_nav_icon_size">48dp</dimen>
 </resources>
