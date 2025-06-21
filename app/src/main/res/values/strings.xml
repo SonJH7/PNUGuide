@@ -32,4 +32,5 @@
     <string name="action_camera">Camera</string>
     <string name="action_quiz">Quiz</string>
     <string name="hint_search_map">Search location</string>
+    <string name="download_map">Download Campus Map</string>
 </resources>
