@@ -29,6 +29,8 @@
         android:layout_height="72dp"
         android:background="@color/background_light"
         app:itemIconSize="32dp"
+        app:labelVisibilityMode="labeled"
+        app:itemHorizontalTranslationEnabled="false"
         app:menu="@menu/menu_bottom_nav" />
 
 </LinearLayout>

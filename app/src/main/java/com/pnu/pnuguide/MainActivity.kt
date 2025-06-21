@@ -7,6 +7,7 @@ import androidx.fragment.app.commit
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pnu.pnuguide.ui.SettingsActivity
+import com.pnu.pnuguide.ui.setupHeader2
 import com.pnu.pnuguide.ui.home.HomeFragment
 import com.pnu.pnuguide.ui.map.MapActivity
 import com.pnu.pnuguide.ui.chat.ChatFragment
@@ -54,12 +55,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_chat -> {
-                    toolbar.title = getString(R.string.title_chatbot)
-                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
-                    toolbar.setNavigationIcon(R.drawable.ic_map)
-                    toolbar.setNavigationOnClickListener {
-                        startActivity(Intent(this, MapActivity::class.java))
-                    }
+                    toolbar.setupHeader2(this, R.string.title_chatbot)
                     supportFragmentManager.commit {
                         replace(R.id.fragment_container, ChatFragment())
                     }
