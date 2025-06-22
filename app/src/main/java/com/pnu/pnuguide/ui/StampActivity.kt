@@ -20,6 +20,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
 
+
 class StampActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

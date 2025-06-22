@@ -1,45 +1,126 @@
 package com.pnu.pnuguide.ui.stamp
 
-import android.content.Intent
-import android.graphics.Bitmap
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.provider.MediaStore
-import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.ImageCapture
+import androidx.camera.core.ImageCaptureException
+import androidx.camera.core.Preview
+import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.pnu.pnuguide.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
+import androidx.recyclerview.widget.LinearLayoutManager
+import java.io.File
+
+import com.pnu.pnuguide.databinding.FragmentStampBinding
 
 class StampFragment : Fragment() {
 
-    private val viewModel by viewModels<StampViewModel>()
+    private var _binding: FragmentStampBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel by viewModels<StampViewModel> {
+        AndroidViewModelFactory.getInstance(requireActivity().application)
+    }
+
+    private val requestPermission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+            if (granted) startCamera()
+            else Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
+        }
+
+    private var imageCapture: ImageCapture? = null
+    private var cameraProvider: ProcessCameraProvider? = null
+    private var currentStampId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_stamp, container, false)
+    ): View {
+        _binding = FragmentStampBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // TODO: setup map and camera intent
-    }
+        binding.recyclerStamps.layoutManager = LinearLayoutManager(requireContext())
+        val adapter = StampAdapter { stamp ->
+            currentStampId = stamp.id
+            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED) {
+                startCamera()
+            } else {
+                requestPermission.launch(Manifest.permission.CAMERA)
+            }
+        }
+        binding.recyclerStamps.adapter = adapter
 
-    private fun dispatchTakePicture() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, 100)
-    }
+        viewModel.stamps.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+        }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 100 && resultCode == AppCompatActivity.RESULT_OK) {
-            val bitmap = data?.extras?.get("data") as? Bitmap ?: return
-            viewModel.processImage(bitmap)
+        viewModel.error.observe(viewLifecycleOwner) { failed ->
+            if (failed) {
+                Toast.makeText(requireContext(), getString(com.pnu.pnuguide.R.string.stamp_failed), Toast.LENGTH_SHORT).show()
+                viewModel.clearError()
+            }
+        }
+
+        // Return to the previous screen (typically Home) when back icon is pressed
+        binding.toolbarStamp.setNavigationOnClickListener {
+            activity?.finish()
         }
     }
 
+    private fun startCamera() {
+        val providerFuture = ProcessCameraProvider.getInstance(requireContext())
+        providerFuture.addListener({
+            cameraProvider = providerFuture.get()
+            val preview = Preview.Builder().build().also {
+                it.setSurfaceProvider(binding.previewView.surfaceProvider)
+            }
+            imageCapture = ImageCapture.Builder().build()
+            val selector = CameraSelector.DEFAULT_BACK_CAMERA
+            cameraProvider?.unbindAll()
+            cameraProvider?.bindToLifecycle(this, selector, preview, imageCapture)
+            binding.previewView.visibility = View.VISIBLE
+        }, ContextCompat.getMainExecutor(requireContext()))
+    }
+
+    private fun captureImage() {
+        val capture = imageCapture ?: return
+        val file = File(requireContext().cacheDir, "stamp_${System.currentTimeMillis()}.jpg")
+        val output = ImageCapture.OutputFileOptions.Builder(file).build()
+        capture.takePicture(output, ContextCompat.getMainExecutor(requireContext()), object : ImageCapture.OnImageSavedCallback {
+            override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                binding.previewView.visibility = View.GONE
+                cameraProvider?.unbindAll()
+                cameraProvider = null
+                currentStampId?.let { viewModel.processImage(file, it) }
+            }
+
+            override fun onError(exception: ImageCaptureException) {
+                Toast.makeText(requireContext(), getString(com.pnu.pnuguide.R.string.stamp_failed), Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        cameraProvider?.unbindAll()
+        cameraProvider = null
+        _binding = null
+    }
 }
+
