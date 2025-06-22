@@ -11,6 +11,7 @@ composeBom = "2024.09.00"
 retrofit = "2.9.0"
 okhttp = "4.12.0"
 coroutines = "1.8.1"
+pytorch = "2.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,6 +35,7 @@ retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", ver
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+pytorch-android-lite = { group = "org.pytorch", name = "pytorch_android_lite", version.ref = "pytorch" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
