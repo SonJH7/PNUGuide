@@ -11,6 +11,8 @@ import kotlinx.coroutines.launch
 
 class ChatViewModel : ViewModel() {
 
+    private val systemPrompt = "부산대학교를 탐방하는 학생들에게 도움을 주는 가이드 챗봇입니다."
+
     private val _messages = MutableStateFlow<List<ChatUiMessage>>(emptyList())
     val messages: StateFlow<List<ChatUiMessage>> = _messages
 
@@ -19,7 +21,8 @@ class ChatViewModel : ViewModel() {
         _messages.value = _messages.value + userMsg
         viewModelScope.launch {
             try {
-                val requestMessages = _messages.value.map {
+                val requestMessages = mutableListOf(ChatMessage("system", systemPrompt))
+                requestMessages += _messages.value.map {
                     ChatMessage(if (it.isUser) "user" else "assistant", it.content)
                 }
                 val request = ChatRequest(messages = requestMessages)

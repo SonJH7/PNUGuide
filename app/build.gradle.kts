@@ -106,6 +106,9 @@ dependencies {
     implementation("androidx.camera:camera-lifecycle:1.3.2")
     implementation("androidx.camera:camera-view:1.3.2")
 
+    // Glide for loading images
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     implementation("com.google.firebase:firebase-auth-ktx")

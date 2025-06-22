@@ -123,3 +123,4 @@ class StampFragment : Fragment() {
         _binding = null
     }
 }
+

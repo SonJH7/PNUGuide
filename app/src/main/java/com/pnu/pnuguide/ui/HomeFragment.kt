@@ -22,11 +22,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<MaterialButton>(R.id.btn_course).setOnClickListener {
+        view.findViewById<MaterialButton>(R.id.btn_continue_course).setOnClickListener {
             startActivity(Intent(requireContext(), CourseActivity::class.java))
         }
-        view.findViewById<MaterialButton>(R.id.btn_stamp).setOnClickListener {
-            startActivity(Intent(requireContext(), StampActivity::class.java))
+        view.findViewById<MaterialButton>(R.id.btn_view_favorites).setOnClickListener {
+            startActivity(Intent(requireContext(), CourseActivity::class.java))
         }
     }
 }
