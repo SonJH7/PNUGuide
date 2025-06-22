@@ -45,7 +45,9 @@ class StampViewModel(private val app: Application) : AndroidViewModel(app) {
 
     fun processBitmap(bitmap: Bitmap) {
         viewModelScope.launch(Dispatchers.IO) {
-            val match = MLImageHelper.matchSpot(app, bitmap)
+            // Use MLImageHelper to classify the captured photo with the
+            // TensorFlow Lite model bundled in assets.
+            val match = MLImageHelper.classifyImage(app, bitmap)
             if (match != null) {
                 _label.postValue(match)
                 markStamp(match)

@@ -17,7 +17,9 @@ object MLImageHelper {
 
     fun bitmapToTensorImage(bitmap: Bitmap): TensorImage {
         val processor = ImageProcessor.Builder()
-            .add(ResizeOp(224, 224, ResizeOp.ResizeMethod.BILINEAR))
+            // The TFLite model expects 64x64 RGB images. Using a larger size
+            // causes a shape mismatch when copying the buffer into the tensor.
+            .add(ResizeOp(64, 64, ResizeOp.ResizeMethod.BILINEAR))
             .add(NormalizeOp(0f, 255f))
             .build()
         val tensor = TensorImage(DataType.FLOAT32)
@@ -93,7 +95,9 @@ object MLImageHelper {
                 LongArray::class.java
             )
             val chw = bitmapToCHWArray(bitmap)
-            val tensor = fromBlob.invoke(null, chw, longArrayOf(1, 3, 224, 224))
+            // PyTorch model (if present) should use the same 64x64 input size
+            // as the TensorFlow Lite model.
+            val tensor = fromBlob.invoke(null, chw, longArrayOf(1, 3, 64, 64))
 
             val ivalueClass = Class.forName("org.pytorch.IValue")
             val fromTensor = ivalueClass.getMethod("from", tensorClass)
@@ -114,13 +118,13 @@ object MLImageHelper {
     }
 
     private fun bitmapToCHWArray(bitmap: Bitmap): FloatArray {
-        val scaled = Bitmap.createScaledBitmap(bitmap, 224, 224, true)
-        val result = FloatArray(3 * 224 * 224)
+        val scaled = Bitmap.createScaledBitmap(bitmap, 64, 64, true)
+        val result = FloatArray(3 * 64 * 64)
         var rIdx = 0
-        var gIdx = 224 * 224
-        var bIdx = 2 * 224 * 224
-        for (y in 0 until 224) {
-            for (x in 0 until 224) {
+        var gIdx = 64 * 64
+        var bIdx = 2 * 64 * 64
+        for (y in 0 until 64) {
+            for (x in 0 until 64) {
                 val pixel = scaled.getPixel(x, y)
                 result[rIdx++] = ((pixel shr 16) and 0xFF) / 255f
                 result[gIdx++] = ((pixel shr 8) and 0xFF) / 255f
@@ -131,19 +135,9 @@ object MLImageHelper {
     }
 
     suspend fun matchSpot(context: Context, bitmap: Bitmap): String? {
-        ensureLoaded(context)
-        val modelLocal = model ?: return null
-        val feature = when (modelLocal) {
-            is Interpreter -> runTflite(modelLocal, bitmap)
-            else -> runPyTorch(modelLocal, bitmap)
-        }
-
-        val embs = embeddings ?: return null
-        val bestIdx = embs.indices.maxByOrNull { idx ->
-            cosineSimilarity(feature, embs[idx])
-        } ?: return null
-        val lbls = labels ?: return null
-        return lbls.getOrNull(bestIdx)
+        // For compatibility with existing call sites, forward to classifyImage
+        // which uses the TensorFlow Lite model to directly predict the label.
+        return classifyImage(context, bitmap)
     }
 
     /**
