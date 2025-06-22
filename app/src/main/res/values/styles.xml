@@ -3,10 +3,24 @@
     <!-- TextAppearance for selected item in BottomNavigationView -->
     <style name="BottomNavTextActive" parent="TextAppearance.Material3.LabelMedium">
         <item name="android:textSize">@dimen/bottom_nav_text_size_selected</item>
-    </style>
+</style>
 
     <!-- TextAppearance for unselected items -->
     <style name="BottomNavTextInactive" parent="TextAppearance.Material3.LabelMedium">
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Rounded primary button used across the app -->
+    <style name="PNUGuide.PrimaryButton" parent="Widget.Material3.Button">
+        <item name="cornerRadius">12dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="backgroundTint">@color/primary</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- Standard card styling -->
+    <style name="PNUGuide.Card" parent="Widget.Material3.MaterialCardView">
+        <item name="cardElevation">2dp</item>
+        <item name="cardCornerRadius">16dp</item>
     </style>
 </resources>
