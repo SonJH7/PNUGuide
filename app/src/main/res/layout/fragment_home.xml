@@ -76,7 +76,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_download_map_top"
-            style="@style/PNUGuide.PrimaryButton"
+            style="@style/PNUGuide.NeutralButton"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginBottom="12dp"
@@ -87,7 +87,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_view_favorites"
-            style="@style/PNUGuide.PrimaryButton"
+            style="@style/PNUGuide.NeutralButton"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginBottom="12dp"
@@ -109,7 +109,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_apply_tour"
-            style="@style/PNUGuide.PrimaryButton"
+            style="@style/PNUGuide.NeutralButton"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
@@ -120,7 +120,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_open_youtube"
-            style="@style/PNUGuide.PrimaryButton"
+            style="@style/PNUGuide.RedButton"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="12dp"
