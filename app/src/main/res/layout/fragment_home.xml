@@ -67,6 +67,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:progress="50" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_download_map"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/download_map"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="8dp" />
     </LinearLayout>
 
 </ScrollView>
