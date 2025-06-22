@@ -24,7 +24,9 @@ import androidx.core.content.ContextCompat
 class StampActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_stamp)
+        // Use the dedicated activity layout which hosts the fragment
+        // so that the fragment logic is executed properly.
+        setContentView(R.layout.activity_stamp)
 
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_stamp)
         toolbar.setupHeader1(this, R.string.title_stamp)
