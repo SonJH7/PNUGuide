@@ -76,6 +76,8 @@ class StampFragment : Fragment() {
             }
         }
 
+        binding.buttonCapture.setOnClickListener { captureImage() }
+
         // Return to the previous screen (typically Home) when back icon is pressed
         binding.toolbarStamp.setNavigationOnClickListener {
             activity?.finish()
@@ -94,6 +96,7 @@ class StampFragment : Fragment() {
             cameraProvider?.unbindAll()
             cameraProvider?.bindToLifecycle(this, selector, preview, imageCapture)
             binding.previewView.visibility = View.VISIBLE
+            binding.buttonCapture.visibility = View.VISIBLE
         }, ContextCompat.getMainExecutor(requireContext()))
     }
 
@@ -104,6 +107,7 @@ class StampFragment : Fragment() {
         capture.takePicture(output, ContextCompat.getMainExecutor(requireContext()), object : ImageCapture.OnImageSavedCallback {
             override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                 binding.previewView.visibility = View.GONE
+                binding.buttonCapture.visibility = View.GONE
                 cameraProvider?.unbindAll()
                 cameraProvider = null
                 currentStampId?.let { viewModel.processImage(file, it) }
