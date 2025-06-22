@@ -43,10 +43,7 @@ class SignUpActivity : AppCompatActivity() {
             viewModel.signUp(email, password)
         }
 
-        binding.buttonLogin.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
+
 
         lifecycleScope.launchWhenStarted {
             viewModel.state.collect { state ->
