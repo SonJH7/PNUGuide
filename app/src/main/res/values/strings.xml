@@ -40,4 +40,5 @@
     <string name="open_youtube">Official YouTube</string>
     <string name="stamp_capture">사진으로 인증하기</string>
     <string name="stamp_failed">인증에 실패했습니다</string>
+    <string name="stamp_label_detected">인식된 스팟: %1$s</string>
 </resources>
