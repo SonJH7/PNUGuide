@@ -46,9 +46,7 @@ class SpotDetailDialogFragment : BottomSheetDialogFragment() {
             dismiss()
         }
         view.findViewById<MaterialButton>(R.id.button_quiz).setOnClickListener {
-            val intent = Intent(requireContext(), QuizActivity::class.java)
-            intent.putExtra(QuizActivity.EXTRA_TITLE, title)
-            startActivity(intent)
+            QuizActivity.start(requireContext(), title)
             dismiss()
         }
     }

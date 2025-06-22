@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +17,9 @@ import kotlinx.coroutines.flow.collectLatest
 
 class ChatFragment : Fragment() {
 
-    private val viewModel by viewModels<ChatViewModel>()
+    private val viewModel by viewModels<ChatViewModel> {
+        AndroidViewModelFactory.getInstance(requireActivity().application)
+    }
     private lateinit var adapter: ChatAdapter
 
     override fun onCreateView(

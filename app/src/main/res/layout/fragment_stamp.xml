@@ -100,7 +100,7 @@
             android:textColor="@color/text_secondary"
             android:textSize="12sp" />
     </LinearLayout>
-</LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_stamps"
         android:layout_width="0dp"
