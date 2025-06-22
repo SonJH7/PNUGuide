@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
+import com.pnu.pnuguide.ui.quiz.QuizActivity
 
 import com.pnu.pnuguide.databinding.FragmentStampBinding
 
@@ -66,7 +67,7 @@ class StampFragment : Fragment() {
 
         viewModel.label.observe(viewLifecycleOwner) { label ->
             label?.let {
-                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                QuizActivity.start(requireContext(), it)
                 viewModel.clearLabel()
             }
         }
