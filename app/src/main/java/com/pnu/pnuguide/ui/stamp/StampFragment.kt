@@ -64,6 +64,13 @@ class StampFragment : Fragment() {
             }
         }
 
+        viewModel.label.observe(viewLifecycleOwner) { label ->
+            label?.let {
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                viewModel.clearLabel()
+            }
+        }
+
 
         // Return to the previous screen (typically Home) when back icon is pressed
         binding.toolbarStamp.setNavigationOnClickListener {
