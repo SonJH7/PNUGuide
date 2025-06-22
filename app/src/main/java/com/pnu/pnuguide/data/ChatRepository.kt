@@ -14,24 +14,34 @@ object ChatRepository {
     }
 
     suspend fun loadMessages(uid: String): List<ChatUiMessage> {
-        val snapshot = firestore.collection("chats").document(uid).get().await()
-        val list = snapshot.get("messages") as? List<Map<String, Any>> ?: return emptyList()
-        return list.map {
-            val content = it["content"] as? String ?: ""
-            val isUser = it["isUser"] as? Boolean ?: false
-            ChatUiMessage(content, isUser)
+        return try {
+            val snapshot = firestore.collection("chats").document(uid).get().await()
+            val list = snapshot.get("messages") as? List<Map<String, Any>> ?: return emptyList()
+            list.map {
+                val content = it["content"] as? String ?: ""
+                val isUser = it["isUser"] as? Boolean ?: false
+                ChatUiMessage(content, isUser)
+            }
+        } catch (e: Exception) {
+            emptyList()
         }
     }
 
     suspend fun saveMessages(uid: String, messages: List<ChatUiMessage>) {
         val list = messages.map { mapOf("content" to it.content, "isUser" to it.isUser) }
-        firestore.collection("chats").document(uid)
-            .set(mapOf("messages" to list))
-            .await()
+        try {
+            firestore.collection("chats").document(uid)
+                .set(mapOf("messages" to list))
+                .await()
+        } catch (_: Exception) {
+        }
     }
 
     suspend fun clearMessages(uid: String) {
-        firestore.collection("chats").document(uid).delete().await()
+        try {
+            firestore.collection("chats").document(uid).delete().await()
+        } catch (_: Exception) {
+        }
     }
 }
 
