@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.content.Intent
 import android.content.res.Resources
 import android.net.Uri
-import com.google.android.material.button.MaterialButton
 import androidx.core.content.FileProvider
 import java.io.File
 import java.io.FileOutputStream
@@ -31,9 +30,6 @@ class StampActivity : AppCompatActivity() {
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_stamp)
         toolbar.setupHeader1(this, R.string.title_stamp)
 
-        findViewById<MaterialButton>(R.id.btn_download_pdf).setOnClickListener {
-            openCampusMapPdf()
-        }
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNav.setOnItemSelectedListener { menuItem ->
