@@ -128,5 +128,6 @@ dependencies {
     // TensorFlow Lite and Lottie
     implementation("org.tensorflow:tensorflow-lite:2.15.0")
     implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
+    implementation(libs.pytorch.android.lite)
     implementation("com.airbnb.android:lottie:6.4.0")
 }
