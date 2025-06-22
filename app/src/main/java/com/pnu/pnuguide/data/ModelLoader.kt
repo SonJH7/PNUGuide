@@ -15,11 +15,21 @@ object ModelLoader {
                 val buffer = FileUtil.loadMappedFile(context, "mobile_feature.tflite")
                 Interpreter(buffer)
             }
+            assetExists(assets, "mobile_feature.ptl") -> {
+                val buffer = FileUtil.loadMappedFile(context, "mobile_feature.ptl")
+                try {
+                    val loaderClass = Class.forName("org.pytorch.LiteModuleLoader")
+                    val loadMethod = loaderClass.getMethod("load", java.nio.ByteBuffer::class.java)
+                    loadMethod.invoke(null, buffer)
+                } catch (e: Exception) {
+                    throw IllegalStateException("PyTorch Mobile library missing", e)
+                }
+            }
             assetExists(assets, "mobile_feature.pt") -> {
                 val buffer = FileUtil.loadMappedFile(context, "mobile_feature.pt")
                 try {
-                    val moduleClass = Class.forName("org.pytorch.Module")
-                    val loadMethod = moduleClass.getMethod("load", java.nio.ByteBuffer::class.java)
+                    val loaderClass = Class.forName("org.pytorch.LiteModuleLoader")
+                    val loadMethod = loaderClass.getMethod("load", java.nio.ByteBuffer::class.java)
                     loadMethod.invoke(null, buffer)
                 } catch (e: Exception) {
                     throw IllegalStateException("PyTorch Mobile library missing", e)
