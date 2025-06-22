@@ -33,18 +33,18 @@ class StampViewModel(private val app: Application) : AndroidViewModel(app) {
         prefs.edit().putBoolean(id, true).apply()
     }
 
-    fun processImage(file: File, targetId: String) {
+    fun processImage(file: File) {
         viewModelScope.launch(Dispatchers.IO) {
             val bitmap = BitmapFactory.decodeFile(file.absolutePath)
-            processBitmap(bitmap, targetId)
+            processBitmap(bitmap)
         }
     }
 
-    fun processBitmap(bitmap: Bitmap, targetId: String) {
+    fun processBitmap(bitmap: Bitmap) {
         viewModelScope.launch(Dispatchers.IO) {
             val match = MLImageHelper.matchSpot(app, bitmap)
-            if (match == targetId) {
-                markStamp(targetId)
+            if (match != null) {
+                markStamp(match)
             } else {
                 _error.postValue(true)
             }
