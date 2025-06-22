@@ -21,6 +21,9 @@ class StampViewModel(private val app: Application) : AndroidViewModel(app) {
     private val _stamps = MutableLiveData<List<Stamp>>(loadStamps())
     val stamps: LiveData<List<Stamp>> = _stamps
 
+    private val _label = MutableLiveData<String?>(null)
+    val label: LiveData<String?> = _label
+
     private fun loadStamps(): List<Stamp> {
         val fromCourse = CourseData.loadStamps()
         return fromCourse.mapIndexed { index, stamp ->
@@ -44,6 +47,7 @@ class StampViewModel(private val app: Application) : AndroidViewModel(app) {
         viewModelScope.launch(Dispatchers.IO) {
             val match = MLImageHelper.matchSpot(app, bitmap)
             if (match != null) {
+                _label.postValue(match)
                 markStamp(match)
             } else {
                 _error.postValue(true)
@@ -65,4 +69,6 @@ class StampViewModel(private val app: Application) : AndroidViewModel(app) {
     val error: LiveData<Boolean> = _error
 
     fun clearError() { _error.value = false }
+
+    fun clearLabel() { _label.value = null }
 }
