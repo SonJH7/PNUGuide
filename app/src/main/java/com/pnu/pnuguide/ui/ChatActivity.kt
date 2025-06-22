@@ -5,6 +5,7 @@ import android.content.Intent
 import android.widget.Button
 import android.widget.EditText
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,7 +26,9 @@ import kotlinx.coroutines.flow.collectLatest
 
 class ChatActivity : AppCompatActivity() {
 
-    private val viewModel by viewModels<ChatViewModel>()
+    private val viewModel by viewModels<ChatViewModel> {
+        AndroidViewModelFactory.getInstance(application)
+    }
     private lateinit var adapter: ChatAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
