@@ -145,5 +145,26 @@ object MLImageHelper {
         val lbls = labels ?: return null
         return lbls.getOrNull(bestIdx)
     }
+
+    /**
+     * Run classification on the given [bitmap] and return the label with the
+     * highest probability.
+     *
+     * This uses the same model and label list loaded by [ensureLoaded]. It
+     * expects the underlying model to directly output probabilities for each
+     * label.
+     */
+    suspend fun classifyImage(context: Context, bitmap: Bitmap): String? {
+        ensureLoaded(context)
+        val interpreter = model as? Interpreter ?: return null
+        val lbls = labels ?: return null
+
+        val input = bitmapToTensorBuffer(bitmap)
+        val output = Array(1) { FloatArray(lbls.size) }
+        interpreter.run(input.buffer, output)
+        val probs = output[0]
+        val bestIdx = probs.indices.maxByOrNull { probs[it] } ?: return null
+        return lbls.getOrNull(bestIdx)
+    }
 }
 
