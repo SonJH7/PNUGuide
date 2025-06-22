@@ -19,7 +19,7 @@
     </style>
 
     <!-- Standard card styling -->
-    <style name="PNUGuide.Card" parent="Widget.MaterialComponents.MaterialCardView">
+    <style name="PNUGuide.Card" parent="Widget.MaterialComponents.CardView">
         <item name="cardElevation">2dp</item>
         <item name="cardCornerRadius">16dp</item>
     </style>
