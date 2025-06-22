@@ -27,8 +27,8 @@ class SettingsActivity : AppCompatActivity() {
         emailView.text = email ?: ""
 
 
-        setItem(R.id.item_account, R.drawable.ic_arrow_back_black_24, "Account Settings")
-        setItem(R.id.item_info, R.drawable.ic_arrow_back_black_24, "App Information")
+        setItem(R.id.item_account, R.drawable.ic_profile, "Account Settings")
+        setItem(R.id.item_info, android.R.drawable.ic_menu_info_details, "App Information")
     }
 
     private fun setItem(resId: Int, iconRes: Int, title: String) {

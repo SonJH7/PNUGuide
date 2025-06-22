@@ -35,10 +35,13 @@
     <string name="action_camera">Camera</string>
     <string name="action_quiz">Quiz</string>
     <string name="hint_search_map">Search location</string>
-    <string name="download_map">Download Campus Map</string>
-    <string name="tour_apply">Campus Tour Application</string>
-    <string name="open_youtube">Official YouTube</string>
+    <string name="download_map">캠퍼스 가이드 다운로드</string>
+    <string name="view_favorites">인기코스 미리보기</string>
+    <string name="tour_apply">캠퍼스 투어 신청</string>
+    <string name="open_youtube">부산대학교 공식 유투브</string>
     <string name="stamp_capture">사진으로 인증하기</string>
     <string name="stamp_failed">인증에 실패했습니다</string>
+    <string name="send">Send</string>
+    <string name="hint_message">Type a message</string>
     <string name="stamp_label_detected">인식된 스팟: %1$s</string>
 </resources>

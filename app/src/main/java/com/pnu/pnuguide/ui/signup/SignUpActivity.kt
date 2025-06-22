@@ -43,6 +43,8 @@ class SignUpActivity : AppCompatActivity() {
             viewModel.signUp(email, password)
         }
 
+
+
         lifecycleScope.launchWhenStarted {
             viewModel.state.collect { state ->
                 when (state) {
