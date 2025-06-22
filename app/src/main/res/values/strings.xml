@@ -41,4 +41,6 @@
     <string name="open_youtube">부산대학교 공식 유투브</string>
     <string name="stamp_capture">사진으로 인증하기</string>
     <string name="stamp_failed">인증에 실패했습니다</string>
+    <string name="send">Send</string>
+    <string name="hint_message">Type a message</string>
 </resources>
