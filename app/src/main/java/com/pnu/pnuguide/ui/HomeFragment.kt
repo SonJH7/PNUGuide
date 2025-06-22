@@ -14,6 +14,7 @@ import android.widget.ProgressBar
 import android.net.Uri
 import com.pnu.pnuguide.data.QuizProgress
 import com.pnu.pnuguide.ui.course.CourseActivity
+import com.google.firebase.auth.FirebaseAuth
 import java.io.File
 import java.io.FileOutputStream
 
@@ -34,6 +35,11 @@ class HomeFragment : Fragment() {
         view.findViewById<MaterialButton>(R.id.btn_view_favorites).setOnClickListener {
             startActivity(Intent(requireContext(), CourseActivity::class.java))
         }
+        val user = FirebaseAuth.getInstance().currentUser
+        val welcome = view.findViewById<TextView>(R.id.tv_welcome)
+        val email = user?.email
+        val prefix = email?.substringBefore("@") ?: ""
+        welcome.text = "Welcome back, $prefix"
 
         view.findViewById<MaterialButton>(R.id.btn_download_map).setOnClickListener {
             openCampusMapPdf()

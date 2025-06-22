@@ -29,6 +29,7 @@
             android:src="@mipmap/ic_launcher_round" />
 
         <TextView
+            android:id="@+id/tv_settings_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Alex Kim"
@@ -38,6 +39,7 @@
             android:paddingTop="8dp" />
 
         <TextView
+            android:id="@+id/tv_settings_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="alex.kim@example.com"
@@ -52,9 +54,7 @@
         android:orientation="vertical">
 
         <include layout="@layout/item_setting" android:id="@+id/item_account" />
-        <include layout="@layout/item_setting" android:id="@+id/item_notification" />
         <include layout="@layout/item_setting" android:id="@+id/item_info" />
-        <include layout="@layout/item_setting" android:id="@+id/item_logout" />
     </LinearLayout>
 
 </LinearLayout>

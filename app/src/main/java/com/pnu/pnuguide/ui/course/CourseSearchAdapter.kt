@@ -42,8 +42,16 @@ class CourseSearchAdapter : RecyclerView.Adapter<CourseSearchAdapter.ViewHolder>
         private val title: TextView = itemView.findViewById(R.id.text_course_title)
         private val desc: TextView = itemView.findViewById(R.id.text_course_desc)
         fun bind(item: CourseItem) {
-            val src = item.imageRes ?: item.imageUrl
-            Glide.with(itemView).load(src).into(image)
+            // Clear previous Glide request to avoid incorrect image mapping
+            // Clear previous Glide request so recycled views don't show wrong images
+            Glide.with(itemView).clear(image)
+            image.setImageDrawable(null)
+
+            if (item.imageRes != null) {
+                image.setImageResource(item.imageRes)
+            } else if (item.imageUrl != null) {
+                Glide.with(itemView).load(item.imageUrl).into(image)
+            }
             title.text = item.title
             desc.text = item.duration
         }
