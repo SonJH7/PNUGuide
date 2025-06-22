@@ -13,4 +13,6 @@
     <color name="text_secondary">#555555</color>
     <color name="background_light">#FFFFFF</color>
     <color name="divider">#E0E0E0</color>
+    <color name="button_neutral">#F5F5F5</color>
+    <color name="youtube_red">#FF0000</color>
 </resources>
