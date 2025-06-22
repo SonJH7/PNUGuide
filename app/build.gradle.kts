@@ -64,6 +64,12 @@ android {
         buildConfig = true
         viewBinding = true
     }
+
+    sourceSets {
+        getByName("main") {
+            res.srcDirs("src/main/res", "src/main/res-quiz")
+        }
+    }
 }
 
 dependencies {
