@@ -128,6 +128,83 @@ class QuizActivity : AppCompatActivity() {
             btnO.setOnClickListener {
                 Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
             }
+        } else if (layoutRes == R.layout.activity_quiz_10) {
+            val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
+            val btnX = findViewById<MaterialButton>(R.id.btn_option_x)
+            btnX.setOnClickListener {
+                QuizProgress.markSolved(this, "quiz10")
+                Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            btnO.setOnClickListener {
+                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+            }
+        } else if (layoutRes == R.layout.activity_quiz_11) {
+            val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
+            val btnX = findViewById<MaterialButton>(R.id.btn_option_x)
+            btnO.setOnClickListener {
+                QuizProgress.markSolved(this, "quiz11")
+                Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            btnX.setOnClickListener {
+                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+            }
+        } else if (layoutRes == R.layout.activity_quiz_12) {
+            val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
+            val btnX = findViewById<MaterialButton>(R.id.btn_option_x)
+            btnO.setOnClickListener {
+                QuizProgress.markSolved(this, "quiz12")
+                Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            btnX.setOnClickListener {
+                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+            }
+        } else if (layoutRes == R.layout.activity_quiz_13) {
+            val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
+            val btnX = findViewById<MaterialButton>(R.id.btn_option_x)
+            btnX.setOnClickListener {
+                QuizProgress.markSolved(this, "quiz13")
+                Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            btnO.setOnClickListener {
+                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+            }
+        } else if (layoutRes == R.layout.activity_quiz_14) {
+            val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
+            val btnX = findViewById<MaterialButton>(R.id.btn_option_x)
+            btnX.setOnClickListener {
+                QuizProgress.markSolved(this, "quiz14")
+                Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            btnO.setOnClickListener {
+                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+            }
+        } else if (layoutRes == R.layout.activity_quiz_15) {
+            val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
+            val btnX = findViewById<MaterialButton>(R.id.btn_option_x)
+            btnX.setOnClickListener {
+                QuizProgress.markSolved(this, "quiz15")
+                Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            btnO.setOnClickListener {
+                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+            }
+        } else if (layoutRes == R.layout.activity_quiz_16) {
+            val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
+            val btnX = findViewById<MaterialButton>(R.id.btn_option_x)
+            btnX.setOnClickListener {
+                QuizProgress.markSolved(this, "quiz16")
+                Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            btnO.setOnClickListener {
+                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
