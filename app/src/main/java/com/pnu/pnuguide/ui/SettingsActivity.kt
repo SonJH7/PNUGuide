@@ -7,6 +7,8 @@ import com.pnu.pnuguide.R
 import com.pnu.pnuguide.ui.setupHeader2
 import android.widget.TextView
 import android.widget.ImageView
+import com.google.firebase.auth.FirebaseAuth
+
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,10 +18,17 @@ class SettingsActivity : AppCompatActivity() {
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar_settings)
         toolbar.setupHeader2(this, R.string.settings)
 
+        val user = FirebaseAuth.getInstance().currentUser
+        val nameView = findViewById<TextView>(R.id.tv_settings_name)
+        val emailView = findViewById<TextView>(R.id.tv_settings_email)
+        val email = user?.email
+        val prefix = email?.substringBefore("@") ?: ""
+        nameView.text = prefix
+        emailView.text = email ?: ""
+
+
         setItem(R.id.item_account, R.drawable.ic_arrow_back_black_24, "Account Settings")
-        setItem(R.id.item_notification, R.drawable.ic_arrow_back_black_24, "Notification Settings")
         setItem(R.id.item_info, R.drawable.ic_arrow_back_black_24, "App Information")
-        setItem(R.id.item_logout, R.drawable.ic_arrow_back_black_24, "Log Out")
     }
 
     private fun setItem(resId: Int, iconRes: Int, title: String) {

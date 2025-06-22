@@ -27,19 +27,19 @@ class StudyActivity : AppCompatActivity() {
 
         val items = listOf(
             CourseItem(
-                "Library Tour",
-                "Approx. 1 hour",
-                "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/z7s2j8n3_expires_30_days.png"
+                "넉넉한 터",
+                "건물번호: 203",
+                imageRes = R.drawable.nuck
             ),
             CourseItem(
-                "Quiet Cafes",
-                "Approx. 2 hours",
-                "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/hc760uhy_expires_30_days.png"
+                "cafe 운죽정",
+                "건물번호: 202",
+                imageRes = R.drawable.cafe
             ),
             CourseItem(
-                "Rest Areas",
-                "Approx. 45 min",
-                "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/yb4j87iw_expires_30_days.png"
+                "진리의 뜰",
+                "운죽정 뒷편",
+                imageRes = R.drawable.jinli
             )
         )
         adapter.submitList(items)

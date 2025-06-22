@@ -31,25 +31,25 @@ class CourseActivity : AppCompatActivity() {
     private val baseList = listOf(
         CourseItem("대학본부", "건물번호: 205", imageRes = R.drawable.head),
         CourseItem("조각공원", "생물관 앞 ", imageRes = R.drawable.piece),
-        CourseItem("새벽벌도서관", "건물번호: 420", imageRes = R.drawable.sae_do),
+        CourseItem("새벽벌 도서관", "건물번호: 420", imageRes = R.drawable.sae_do),
         CourseItem("예원정", "사회관 앞", imageRes = R.drawable.yea),
         CourseItem("금정회관 식당", "건물번호: 419", imageRes = R.drawable.gres),
         CourseItem("경영관", "건물번호: 514", imageRes = R.drawable.busy),
         CourseItem("법학관 모의 법정", "건물번호: 609", imageRes = R.drawable.beopjeong),
         CourseItem("중앙도서관", "건물번호: 510", imageRes = R.drawable.ang),
         CourseItem("음악관", "건물번호: 707", imageRes = R.drawable.music),
-        CourseItem("학생회관 식당", "건물번호: 708", imageRes = R.drawable.sres),
-        CourseItem("경암체육관", "건물번호: 706", imageRes = R.drawable.p),
+        CourseItem("학생회관식당", "건물번호: 708", imageRes = R.drawable.sres),
+        CourseItem("경암 체육관", "건물번호: 706", imageRes = R.drawable.p),
         CourseItem("약학관", "건물번호: 503", imageRes = R.drawable.m),
         CourseItem("지질박물관", "건물번호: 414", imageRes = R.drawable.jijil),
         CourseItem("샛벌회관 식당", "건물번호: 415", imageRes = R.drawable.bres),
         CourseItem("박물관", "건물번호: 412", imageRes = R.drawable.museum),
-        CourseItem("10.16기념관", "건물번호: 403", imageRes = R.drawable.tensix),
+        CourseItem("10.16 기념관", "건물번호: 403", imageRes = R.drawable.tensix),
         CourseItem("건설관", "건물번호: 401", imageRes = R.drawable.a),
         CourseItem("기계관 V-SPACE", "건물번호: 303", imageRes = R.drawable.vs),
         CourseItem("진리의 뜰", "운죽정 뒷편", imageRes = R.drawable.jinli),
         CourseItem("인문관", "건물번호: 306", imageRes = R.drawable.inmun),
-        CourseItem("넉넉한 터", "건물번호: 203", imageRes = R.drawable.nuck),
+        CourseItem("넉넉한터", "건물번호: 203", imageRes = R.drawable.nuck),
         CourseItem("시월 광장", "넉터 앞편", imageRes = R.drawable.ten),
         CourseItem("민주 언덕", "새벽벌 도서관 앞", imageRes = R.drawable.minju),
         CourseItem("미리내 골", "인문관 옆편", imageRes = R.drawable.miri)
@@ -77,12 +77,6 @@ class CourseActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.image_study_2).setImageResource(R.drawable.cafe)
         findViewById<ImageView>(R.id.image_study_3).setImageResource(R.drawable.jinli)
 
-        Glide.with(this)
-            .load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/hc760uhy_expires_30_days.png")
-            .into(findViewById(R.id.image_study_2))
-        Glide.with(this)
-            .load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/yb4j87iw_expires_30_days.png")
-            .into(findViewById(R.id.image_study_3))
 
         val recycler = findViewById<RecyclerView>(R.id.recycler_search)
         recycler.layoutManager = LinearLayoutManager(this)
