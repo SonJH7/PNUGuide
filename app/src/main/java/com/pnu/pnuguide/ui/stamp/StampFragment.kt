@@ -18,7 +18,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
-import androidx.recyclerview.widget.LinearLayoutManager
 import java.io.File
 
 import com.pnu.pnuguide.databinding.FragmentStampBinding
@@ -40,7 +39,6 @@ class StampFragment : Fragment() {
 
     private var imageCapture: ImageCapture? = null
     private var cameraProvider: ProcessCameraProvider? = null
-    private var currentStampId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,20 +51,13 @@ class StampFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerStamps.layoutManager = LinearLayoutManager(requireContext())
-        val adapter = StampAdapter { stamp ->
-            currentStampId = stamp.id
+        binding.buttonStartCamera.setOnClickListener {
             if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED) {
                 startCamera()
             } else {
                 requestPermission.launch(Manifest.permission.CAMERA)
             }
-        }
-        binding.recyclerStamps.adapter = adapter
-
-        viewModel.stamps.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
         }
 
         viewModel.error.observe(viewLifecycleOwner) { failed ->
@@ -110,7 +101,7 @@ class StampFragment : Fragment() {
                 binding.buttonCapture.visibility = View.GONE
                 cameraProvider?.unbindAll()
                 cameraProvider = null
-                currentStampId?.let { viewModel.processImage(file, it) }
+                viewModel.processImage(file)
             }
 
             override fun onError(exception: ImageCaptureException) {

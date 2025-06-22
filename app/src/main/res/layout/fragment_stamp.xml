@@ -91,23 +91,23 @@
             android:textSize="12sp" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_stamps"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        tools:listitem="@layout/item_stamp_row"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_start_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stamp_capture"
         app:layout_constraintTop_toBottomOf="@id/btn_download_pdf"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottom_nav"/>
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav" />
 
     <androidx.camera.view.PreviewView
         android:id="@+id/preview_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="@id/recycler_stamps"
-        app:layout_constraintBottom_toBottomOf="@id/recycler_stamps"
+        app:layout_constraintTop_toTopOf="@id/button_start_camera"
+        app:layout_constraintBottom_toBottomOf="@id/button_start_camera"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
