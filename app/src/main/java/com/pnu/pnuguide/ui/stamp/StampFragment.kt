@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.contract.ActivityResultContracts.TakePicturePreview
 import androidx.core.content.ContextCompat
@@ -15,6 +16,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
 import com.pnu.pnuguide.ui.quiz.QuizActivity
+import com.pnu.pnuguide.R
 
 import com.pnu.pnuguide.databinding.FragmentStampBinding
 
@@ -67,6 +69,11 @@ class StampFragment : Fragment() {
 
         viewModel.label.observe(viewLifecycleOwner) { label ->
             label?.let {
+                Log.d("StampFragment", "Recognized label: $it")
+                Toast.makeText(requireContext(),
+                    getString(R.string.stamp_label_detected, it),
+                    Toast.LENGTH_SHORT
+                ).show()
                 QuizActivity.start(requireContext(), it)
                 viewModel.clearLabel()
             }
