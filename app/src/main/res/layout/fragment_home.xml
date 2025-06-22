@@ -22,13 +22,16 @@
             android:layout_marginBottom="20dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_continue_course"
+            android:id="@+id/btn_download_map_top"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginBottom="12dp"
-            android:text="Continue Last Course"
+            android:text="@string/download_map"
             android:textStyle="bold"
             android:textColor="@android:color/white"
+            app:icon="@drawable/ic_map"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
             app:backgroundTint="@color/primary"
             app:cornerRadius="8dp" />
 
@@ -76,6 +79,37 @@
             android:text="@string/download_map"
             android:textStyle="bold"
             android:textColor="@android:color/white"
+            app:icon="@drawable/ic_map"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_apply_tour"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/tour_apply"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            app:icon="@drawable/ic_tour"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_open_youtube"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/open_youtube"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            app:icon="@drawable/ic_youtube"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
             app:backgroundTint="@color/primary"
             app:cornerRadius="8dp" />
     </LinearLayout>

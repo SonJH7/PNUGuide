@@ -29,8 +29,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<MaterialButton>(R.id.btn_continue_course).setOnClickListener {
-            startActivity(Intent(requireContext(), CourseActivity::class.java))
+        view.findViewById<MaterialButton>(R.id.btn_download_map_top).setOnClickListener {
+            openCampusMapPdf()
         }
         view.findViewById<MaterialButton>(R.id.btn_view_favorites).setOnClickListener {
             startActivity(Intent(requireContext(), CourseActivity::class.java))
@@ -43,6 +43,14 @@ class HomeFragment : Fragment() {
 
         view.findViewById<MaterialButton>(R.id.btn_download_map).setOnClickListener {
             openCampusMapPdf()
+        }
+
+        view.findViewById<MaterialButton>(R.id.btn_apply_tour).setOnClickListener {
+            openWebUrl("https://www.pusan.ac.kr/kor/CMS/CampusTour/information.do?mCode=MN137")
+        }
+
+        view.findViewById<MaterialButton>(R.id.btn_open_youtube).setOnClickListener {
+            openWebUrl("https://www.youtube.com/channel/UC2C8QLSMp3QMFS96xQc7WRA")
         }
 
         val count = QuizProgress.getCount(requireContext())
@@ -66,6 +74,11 @@ class HomeFragment : Fragment() {
             setDataAndType(uri, "application/pdf")
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
+        startActivity(intent)
+    }
+
+    private fun openWebUrl(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         startActivity(intent)
     }
 }
