@@ -10,6 +10,9 @@ import com.pnu.pnuguide.ui.setupHeader1
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
+import android.widget.Toast
+import com.google.android.material.button.MaterialButton
+import com.pnu.pnuguide.data.QuizProgress
 
 class QuizActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +28,19 @@ class QuizActivity : AppCompatActivity() {
             toolbar.setupHeader1(this, R.string.title_quiz)
         }
         toolbar.setNavigationOnClickListener { finish() }
+
+        if (layoutRes == R.layout.activity_quiz_1) {
+            val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
+            val btnX = findViewById<MaterialButton>(R.id.btn_option_x)
+            btnO.setOnClickListener {
+                QuizProgress.markSolved(this, "quiz1")
+                Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            btnX.setOnClickListener {
+                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
