@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
         val welcome = view.findViewById<TextView>(R.id.tv_welcome)
         val email = user?.email
         val prefix = email?.substringBefore("@") ?: ""
-        welcome.text = "Welcome back, $prefix"
+        welcome.text = "방문을 환영합니다! ${prefix}님"
 
 
         view.findViewById<MaterialButton>(R.id.btn_apply_tour).setOnClickListener {
