@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.MaterialToolbar
 import com.pnu.pnuguide.R
 import com.pnu.pnuguide.ui.setupHeader2
+import com.pnu.pnuguide.ui.AppInfoActivity
 import android.widget.TextView
 import android.widget.ImageView
 import com.google.firebase.auth.FirebaseAuth
@@ -29,6 +30,10 @@ class SettingsActivity : AppCompatActivity() {
 
         setItem(R.id.item_account, R.drawable.ic_profile, "Account Settings")
         setItem(R.id.item_info, android.R.drawable.ic_menu_info_details, "App Information")
+
+        findViewById<android.view.View>(R.id.item_info).setOnClickListener {
+            startActivity(android.content.Intent(this, AppInfoActivity::class.java))
+        }
     }
 
     private fun setItem(resId: Int, iconRes: Int, title: String) {
