@@ -42,7 +42,7 @@ class StampViewModel(private val app: Application) : AndroidViewModel(app) {
 
     fun processBitmap(bitmap: Bitmap, targetId: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val match = MLImageHelper.matchSpot(bitmap)
+            val match = MLImageHelper.matchSpot(app, bitmap)
             if (match == targetId) {
                 markStamp(targetId)
             } else {
