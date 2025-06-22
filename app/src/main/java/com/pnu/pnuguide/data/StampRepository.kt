@@ -24,6 +24,6 @@ object StampRepository {
 }
 
 private suspend fun <T> Task<T>.await(): T = suspendCancellableCoroutine { cont ->
-    addOnSuccessListener { cont.resume(it) }
+    addOnSuccessListener { cont.resume(it) {} }
     addOnFailureListener { cont.resumeWithException(it) }
 }

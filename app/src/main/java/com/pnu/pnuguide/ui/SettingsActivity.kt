@@ -98,7 +98,8 @@ class SettingsActivity : AppCompatActivity() {
     }
 }
 
-private suspend fun <T> com.google.android.gms.tasks.Task<T>.await(): T = kotlinx.coroutines.suspendCancellableCoroutine { cont ->
-    addOnSuccessListener { cont.resume(it) }
-    addOnFailureListener { cont.resumeWithException(it) }
-}
+private suspend fun <T> com.google.android.gms.tasks.Task<T>.await(): T =
+    kotlinx.coroutines.suspendCancellableCoroutine { cont ->
+        addOnSuccessListener { cont.resume(it) {} }
+        addOnFailureListener { cont.resumeWithException(it) }
+    }
