@@ -32,6 +32,14 @@
             app:backgroundTint="@color/primary"
             app:cornerRadius="8dp" />
 
+        <TextView
+            android:id="@+id/text_stamp_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Stamp Progress: 0/24"
+            android:textStyle="bold" />
+
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

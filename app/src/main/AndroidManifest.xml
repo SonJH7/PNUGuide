@@ -41,6 +41,14 @@
         <activity android:name="com.pnu.pnuguide.ui.course.SpotListActivity" />
         <activity android:name="com.pnu.pnuguide.ui.course.SpotDetailActivity" />
         <activity android:name="com.pnu.pnuguide.ui.SettingsActivity" />
+        <activity android:name="com.pnu.pnuguide.ui.quiz.Quiz17Activity" />
+        <activity android:name="com.pnu.pnuguide.ui.quiz.Quiz18Activity" />
+        <activity android:name="com.pnu.pnuguide.ui.quiz.Quiz19Activity" />
+        <activity android:name="com.pnu.pnuguide.ui.quiz.Quiz20Activity" />
+        <activity android:name="com.pnu.pnuguide.ui.quiz.Quiz21Activity" />
+        <activity android:name="com.pnu.pnuguide.ui.quiz.Quiz22Activity" />
+        <activity android:name="com.pnu.pnuguide.ui.quiz.Quiz23Activity" />
+        <activity android:name="com.pnu.pnuguide.ui.quiz.Quiz24Activity" />
     </application>
 
 </manifest>

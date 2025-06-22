@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_quiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:navigationIcon="@drawable/ic_map"
+        android:title="@string/title_quiz" />
+
+    <TextView
+        android:id="@+id/text_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_o"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="O" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_x"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="X"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>
