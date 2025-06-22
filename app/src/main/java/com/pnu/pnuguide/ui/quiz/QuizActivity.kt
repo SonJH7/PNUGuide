@@ -60,7 +60,7 @@ class QuizActivity : AppCompatActivity() {
                 finish()
             }
             btnO.setOnClickListener {
-                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "오답입니다. 새벽벌 도서관은 24시간은 아니지만, 새벽별당은 24시간 입니다.", Toast.LENGTH_SHORT).show()
             }
         } else if (layoutRes == R.layout.activity_quiz_4) {
             val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
@@ -93,7 +93,7 @@ class QuizActivity : AppCompatActivity() {
                 finish()
             }
             btnO.setOnClickListener {
-                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "오답입니다. 경영관은 500번대 건물로 305인 인문관보다 높은 곳에 위치합니다.", Toast.LENGTH_SHORT).show()
             }
         } else if (layoutRes == R.layout.activity_quiz_7) {
             val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
@@ -137,7 +137,7 @@ class QuizActivity : AppCompatActivity() {
                 finish()
             }
             btnO.setOnClickListener {
-                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "오답입니다. 주말 및 공휴일에는 운영하지 않는 경우가 많다.", Toast.LENGTH_SHORT).show()
             }
         } else if (layoutRes == R.layout.activity_quiz_11) {
             val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
@@ -148,7 +148,7 @@ class QuizActivity : AppCompatActivity() {
                 finish()
             }
             btnX.setOnClickListener {
-                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "오답입니다. 체육 수업 외 시간에는 신청 후 이용 가능합니다.", Toast.LENGTH_SHORT).show()
             }
         } else if (layoutRes == R.layout.activity_quiz_12) {
             val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
@@ -170,7 +170,7 @@ class QuizActivity : AppCompatActivity() {
                 finish()
             }
             btnO.setOnClickListener {
-                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "오답입니다. 일반 시민도 관람 가능하며, 예약제로 운영되기도 한다.", Toast.LENGTH_SHORT).show()
             }
         } else if (layoutRes == R.layout.activity_quiz_14) {
             val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
@@ -181,7 +181,7 @@ class QuizActivity : AppCompatActivity() {
                 finish()
             }
             btnO.setOnClickListener {
-                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "오답입니다. 일반적으로 정식 또는 메뉴 기반 식단을 제공한다.", Toast.LENGTH_SHORT).show()
             }
         } else if (layoutRes == R.layout.activity_quiz_15) {
             val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
@@ -192,7 +192,7 @@ class QuizActivity : AppCompatActivity() {
                 finish()
             }
             btnO.setOnClickListener {
-                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "오답입니다. 학교 부속기관입니다.", Toast.LENGTH_SHORT).show()
             }
         } else if (layoutRes == R.layout.activity_quiz_16) {
             val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
@@ -203,7 +203,7 @@ class QuizActivity : AppCompatActivity() {
                 finish()
             }
             btnO.setOnClickListener {
-                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "오답입니다. 민주화 운동과 관련된 날로, 역사적 의미를 담은 기념관입니다.", Toast.LENGTH_SHORT).show()
             }
         }
     }
