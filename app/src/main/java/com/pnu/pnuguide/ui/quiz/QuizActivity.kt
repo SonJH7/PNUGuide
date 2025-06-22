@@ -49,7 +49,7 @@ class QuizActivity : AppCompatActivity() {
                 finish()
             }
             btnO.setOnClickListener {
-                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "오답입니다. 1990년대 후반부터 조성되어 2000년대 초반에 주요 조형물들이 설치됨.", Toast.LENGTH_SHORT).show()
             }
         }
     }
