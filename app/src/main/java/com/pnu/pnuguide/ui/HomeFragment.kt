@@ -41,9 +41,6 @@ class HomeFragment : Fragment() {
         val prefix = email?.substringBefore("@") ?: ""
         welcome.text = "Welcome back, $prefix"
 
-        view.findViewById<MaterialButton>(R.id.btn_download_map).setOnClickListener {
-            openCampusMapPdf()
-        }
 
         view.findViewById<MaterialButton>(R.id.btn_apply_tour).setOnClickListener {
             openWebUrl("https://www.pusan.ac.kr/kor/CMS/CampusTour/information.do?mCode=MN137")

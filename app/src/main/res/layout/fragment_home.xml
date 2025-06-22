@@ -71,19 +71,19 @@
             android:layout_height="wrap_content"
             android:progress="50" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_download_map"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/download_map"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            app:icon="@drawable/ic_map"
-            app:iconGravity="textStart"
-            app:iconPadding="8dp"
-            app:backgroundTint="@color/primary"
-            app:cornerRadius="8dp" />
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/btn_download_map"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:text="@string/download_map"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            app:icon="@drawable/ic_map"-->
+<!--            app:iconGravity="textStart"-->
+<!--            app:iconPadding="8dp"-->
+<!--            app:backgroundTint="@color/primary"-->
+<!--            app:cornerRadius="8dp" />-->
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_apply_tour"
