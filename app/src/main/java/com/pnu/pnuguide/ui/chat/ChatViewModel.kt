@@ -5,6 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.pnu.pnuguide.network.ChatMessage
 import com.pnu.pnuguide.network.ChatRequest
 import com.pnu.pnuguide.network.RetrofitClient
+import com.pnu.pnuguide.data.AuthRepository
+import com.pnu.pnuguide.data.ChatRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -16,9 +18,20 @@ class ChatViewModel : ViewModel() {
     private val _messages = MutableStateFlow<List<ChatUiMessage>>(emptyList())
     val messages: StateFlow<List<ChatUiMessage>> = _messages
 
+    init {
+        AuthRepository.uid?.let { uid ->
+            viewModelScope.launch {
+                _messages.value = ChatRepository.loadMessages(uid)
+            }
+        }
+    }
+
     fun sendMessage(text: String) {
         val userMsg = ChatUiMessage(text, true)
         _messages.value = _messages.value + userMsg
+        AuthRepository.uid?.let { uid ->
+            viewModelScope.launch { ChatRepository.saveMessages(uid, _messages.value) }
+        }
         viewModelScope.launch {
             try {
                 val requestMessages = mutableListOf(ChatMessage("system", systemPrompt))
@@ -29,6 +42,9 @@ class ChatViewModel : ViewModel() {
                 val response = RetrofitClient.openAiService.chat(request)
                 val reply = response.choices.firstOrNull()?.message?.content ?: ""
                 _messages.value = _messages.value + ChatUiMessage(reply, false)
+                AuthRepository.uid?.let { u ->
+                    ChatRepository.saveMessages(u, _messages.value)
+                }
             } catch (e: Exception) {
                 _messages.value = _messages.value + ChatUiMessage("Error: ${e.message}", false)
             }
