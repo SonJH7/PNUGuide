@@ -31,7 +31,7 @@ class CourseActivity : AppCompatActivity() {
     private val baseList = listOf(
         CourseItem("대학본부", "건물번호: 205", imageRes = R.drawable.head),
         CourseItem("조각공원", "생물관 앞 ", imageRes = R.drawable.piece),
-        CourseItem("새벽벌도서관", "건물번호: 420", imageRes = R.drawable.sae_do),
+        CourseItem("새벽벌 도서관", "건물번호: 420", imageRes = R.drawable.sae_do),
         CourseItem("예원정", "사회관 앞", imageRes = R.drawable.yea),
         CourseItem("금정회관 식당", "건물번호: 419", imageRes = R.drawable.gres),
         CourseItem("경영관", "건물번호: 514", imageRes = R.drawable.busy),
@@ -77,12 +77,6 @@ class CourseActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.image_study_2).setImageResource(R.drawable.cafe)
         findViewById<ImageView>(R.id.image_study_3).setImageResource(R.drawable.jinli)
 
-        Glide.with(this)
-            .load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/hc760uhy_expires_30_days.png")
-            .into(findViewById(R.id.image_study_2))
-        Glide.with(this)
-            .load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/bnWyQkDlsL/yb4j87iw_expires_30_days.png")
-            .into(findViewById(R.id.image_study_3))
 
         val recycler = findViewById<RecyclerView>(R.id.recycler_search)
         recycler.layoutManager = LinearLayoutManager(this)

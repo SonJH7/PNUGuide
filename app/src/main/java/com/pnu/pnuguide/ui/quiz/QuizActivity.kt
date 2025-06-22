@@ -293,7 +293,19 @@ class QuizActivity : AppCompatActivity() {
             btnX.setOnClickListener {
                 Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
             }
+        }else if (layoutRes == R.layout.activity_quiz_25) {
+            val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
+            val btnX = findViewById<MaterialButton>(R.id.btn_option_x)
+            btnO.setOnClickListener {
+                QuizProgress.markSolved(this, "quiz17")
+                Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            btnX.setOnClickListener {
+                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+            }
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -314,11 +326,14 @@ class QuizActivity : AppCompatActivity() {
                 "대학본부" -> R.layout.activity_quiz_1
                 "조각공원" -> R.layout.activity_quiz_2
                 "새벽벌도서관" -> R.layout.activity_quiz_3
+                "새벽벌 도서관" -> R.layout.activity_quiz_3
                 "예원정" -> R.layout.activity_quiz_4
                 "금정회관 식당" -> R.layout.activity_quiz_5
                 "경영관" -> R.layout.activity_quiz_6
                 "법학관 모의 법정" -> R.layout.activity_quiz_7
+                "법학관 모의법정" -> R.layout.activity_quiz_7
                 "중앙도서관" -> R.layout.activity_quiz_8
+                "중앙 도서관" -> R.layout.activity_quiz_8
                 "음악관" -> R.layout.activity_quiz_9
                 "학생회관 식당" -> R.layout.activity_quiz_10
                 "경암체육관" -> R.layout.activity_quiz_11
@@ -329,12 +344,15 @@ class QuizActivity : AppCompatActivity() {
                 "10.16기념관" -> R.layout.activity_quiz_16
                 "건설관" -> R.layout.activity_quiz_17
                 "기계관 V-SPACE" -> R.layout.activity_quiz_18
+                "PNU V-SPACE" -> R.layout.activity_quiz_18
                 "진리의 뜰" -> R.layout.activity_quiz_19
                 "인문관" -> R.layout.activity_quiz_20
                 "넉넉한 터" -> R.layout.activity_quiz_21
                 "시월 광장" -> R.layout.activity_quiz_22
                 "민주 언덕" -> R.layout.activity_quiz_23
                 "미리내 골" -> R.layout.activity_quiz_24
+                "cafe 운죽정" -> R.layout.activity_quiz_25
+
                 else -> R.layout.activity_quiz
             }
             val intent = Intent(context, QuizActivity::class.java)
