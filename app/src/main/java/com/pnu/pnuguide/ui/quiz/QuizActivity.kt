@@ -40,6 +40,17 @@ class QuizActivity : AppCompatActivity() {
             btnX.setOnClickListener {
                 Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
             }
+        } else if (layoutRes == R.layout.activity_quiz_2) {
+            val btnO = findViewById<MaterialButton>(R.id.btn_option_o)
+            val btnX = findViewById<MaterialButton>(R.id.btn_option_x)
+            btnX.setOnClickListener {
+                QuizProgress.markSolved(this, "quiz2")
+                Toast.makeText(this, "정답입니다!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            btnO.setOnClickListener {
+                Toast.makeText(this, "오답입니다", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
