@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
         val count = QuizProgress.getCount(requireContext())
         val progressText = view.findViewById<TextView>(R.id.tv_stamp_progress)
         val progressBar = view.findViewById<ProgressBar>(R.id.progress_stamp)
-        progressText.text = "Stamps Collected: ${'$'}count/24"
+        progressText.text = "Stamps Collected: $count/24"
         progressBar.max = 24
         progressBar.progress = count
     }
