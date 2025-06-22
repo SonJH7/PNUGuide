@@ -131,19 +131,9 @@ object MLImageHelper {
     }
 
     suspend fun matchSpot(context: Context, bitmap: Bitmap): String? {
-        ensureLoaded(context)
-        val modelLocal = model ?: return null
-        val feature = when (modelLocal) {
-            is Interpreter -> runTflite(modelLocal, bitmap)
-            else -> runPyTorch(modelLocal, bitmap)
-        }
-
-        val embs = embeddings ?: return null
-        val bestIdx = embs.indices.maxByOrNull { idx ->
-            cosineSimilarity(feature, embs[idx])
-        } ?: return null
-        val lbls = labels ?: return null
-        return lbls.getOrNull(bestIdx)
+        // For compatibility with existing call sites, forward to classifyImage
+        // which uses the TensorFlow Lite model to directly predict the label.
+        return classifyImage(context, bitmap)
     }
 
     /**
